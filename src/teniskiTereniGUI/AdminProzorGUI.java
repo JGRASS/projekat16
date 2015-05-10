@@ -1,0 +1,297 @@
+package teniskiTereniGUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import java.awt.Dimension;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.border.TitledBorder;
+import java.awt.Toolkit;
+import java.awt.FlowLayout;
+import javax.swing.JMenu;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.JMenuItem;
+import java.awt.Font;
+import javax.swing.AbstractListModel;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
+import java.awt.ComponentOrientation;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JDesktopPane;
+import java.awt.GridLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Component;
+import javax.swing.JTextArea;
+
+public class AdminProzorGUI extends JFrame {
+	private JMenuBar menuBar;
+	private JMenu mnFile;
+	private JMenu mnHelp;
+	private JMenu mnAbout;
+	private JMenuItem mntmNew;
+	private JMenuItem mntmOpen;
+	private JMenuItem mntmSave;
+	private JMenuItem mntmExit;
+	private JPanel panel;
+	private JPanel panel_2;
+	private JList list;
+	private JList list_1;
+	private JList list_2;
+	private JButton btnDodajTeren;
+	private JButton btnIzbrisiTeren;
+	private JButton btnDodajRezervaciju;
+	private JButton btnIzbrisiRezervaciju;
+	private JMenuItem mntmOProgramu;
+	private JMenuItem mntmPomoc;
+	private JList list_3;
+	private JScrollPane scrollPane;
+	private JTextArea textArea;
+    
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AdminProzorGUI frame = new AdminProzorGUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AdminProzorGUI() {
+		setTitle("Administrator");
+		setMinimumSize(new Dimension(705, 435));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AdminProzorGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 708, 408);
+		setJMenuBar(getMenuBar_1());
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		getContentPane().add(getScrollPane(), BorderLayout.SOUTH);
+		getContentPane().add(getPanel(), BorderLayout.WEST);
+		getContentPane().add(getPanel_2(), BorderLayout.CENTER);
+	}
+
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnFile());
+			menuBar.add(getMnHelp());
+			menuBar.add(getMnAbout());
+		}
+		return menuBar;
+	}
+	private JMenu getMnFile() {
+		if (mnFile == null) {
+			mnFile = new JMenu("File");
+			mnFile.add(getMntmNew());
+			mnFile.add(getMntmOpen());
+			mnFile.add(getMntmSave());
+			mnFile.add(getMntmExit());
+		}
+		return mnFile;
+	}
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmPomoc());
+		}
+		return mnHelp;
+	}
+	private JMenu getMnAbout() {
+		if (mnAbout == null) {
+			mnAbout = new JMenu("About");
+			mnAbout.add(getMntmOProgramu());
+		}
+		return mnAbout;
+	}
+	private JMenuItem getMntmNew() {
+		if (mntmNew == null) {
+			mntmNew = new JMenuItem("New");
+		}
+		return mntmNew;
+	}
+	private JMenuItem getMntmOpen() {
+		if (mntmOpen == null) {
+			mntmOpen = new JMenuItem("Open");
+		}
+		return mntmOpen;
+	}
+	private JMenuItem getMntmSave() {
+		if (mntmSave == null) {
+			mntmSave = new JMenuItem("Save");
+		}
+		return mntmSave;
+	}
+	private JMenuItem getMntmExit() {
+		if (mntmExit == null) {
+			mntmExit = new JMenuItem("Exit");
+		}
+		return mntmExit;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBackground(new Color(128, 128, 128));
+			panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+			flowLayout.setVgap(10);
+			panel.setPreferredSize(new Dimension(140, 10));
+			panel.add(getBtnDodajTeren());
+			panel.add(getBtnIzbrisiTeren());
+			panel.add(getBtnDodajRezervaciju());
+			panel.add(getBtnIzbrisiRezervaciju());
+		}
+		return panel;
+	}
+	private JPanel getPanel_2() {
+		if (panel_2 == null) {
+			panel_2 = new JPanel();
+			panel_2.setBackground(new Color(128, 128, 128));
+			panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			panel_2.setLayout(null);
+			panel_2.add(getList());
+			panel_2.add(getList_1());
+			panel_2.add(getList_2());
+			panel_2.add(getList_3());
+		}
+		return panel_2;
+	}
+	private JList getList() {
+		if (list == null) {
+			list = new JList();
+			list.setBounds(10, 7, 90, 250);
+			list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list.setPreferredSize(new Dimension(90, 250));
+		}
+		return list;
+	}
+	private JList getList_1() {
+		if (list_1 == null) {
+			list_1 = new JList();
+			list_1.setBounds(110, 7, 97, 149);
+			list_1.setForeground(new Color(128, 128, 128));
+			list_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+			list_1.setModel(new AbstractListModel() {
+				String[] values = new String[] {"Ponedeljak", "Utorak", "Sreda", "Cetvrtak", "Petak", "Subota", "Nedelja"};
+				public int getSize() {
+					return values.length;
+				}
+				public Object getElementAt(int index) {
+					return values[index];
+				}
+			});
+			list_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list_1.setPreferredSize(new Dimension(90, 250));
+		}
+		return list_1;
+	}
+	private JList getList_2() {
+		if (list_2 == null) {
+			list_2 = new JList();
+			list_2.setModel(new AbstractListModel() {
+				String[] values = new String[] {};
+				public int getSize() {
+					return values.length;
+				}
+				public Object getElementAt(int index) {
+					return values[index];
+				}
+			});
+			list_2.setBounds(217, 7, 100, 250);
+			list_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list_2.setPreferredSize(new Dimension(100, 250));
+		}
+		return list_2;
+	}
+	private JButton getBtnDodajTeren() {
+		if (btnDodajTeren == null) {
+			btnDodajTeren = new JButton("Dodaj teren");
+			btnDodajTeren.setBackground(new Color(128, 128, 128));
+			btnDodajTeren.setPreferredSize(new Dimension(135, 30));
+		}
+		return btnDodajTeren;
+	}
+	private JButton getBtnIzbrisiTeren() {
+		if (btnIzbrisiTeren == null) {
+			btnIzbrisiTeren = new JButton("Izbrisi teren");
+			btnIzbrisiTeren.setBackground(new Color(128, 128, 128));
+			btnIzbrisiTeren.setPreferredSize(new Dimension(135, 30));
+		}
+		return btnIzbrisiTeren;
+	}
+	private JButton getBtnDodajRezervaciju() {
+		if (btnDodajRezervaciju == null) {
+			btnDodajRezervaciju = new JButton("Dodaj rezervaciju");
+			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
+			btnDodajRezervaciju.setPreferredSize(new Dimension(135, 30));
+		}
+		return btnDodajRezervaciju;
+	}
+	private JButton getBtnIzbrisiRezervaciju() {
+		if (btnIzbrisiRezervaciju == null) {
+			btnIzbrisiRezervaciju = new JButton("Izbrisi rezervaciju");
+			btnIzbrisiRezervaciju.setBackground(new Color(128, 128, 128));
+			btnIzbrisiRezervaciju.setPreferredSize(new Dimension(135, 30));
+		}
+		return btnIzbrisiRezervaciju;
+	}
+	private JMenuItem getMntmOProgramu() {
+		if (mntmOProgramu == null) {
+			mntmOProgramu = new JMenuItem("O programu");
+		}
+		return mntmOProgramu;
+	}
+	private JMenuItem getMntmPomoc() {
+		if (mntmPomoc == null) {
+			mntmPomoc = new JMenuItem("Pomoc?");
+		}
+		return mntmPomoc;
+	}
+	private JList getList_3() {
+		if (list_3 == null) {
+			list_3 = new JList();
+			list_3.setBounds(328, 7, 217, 250);
+			list_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list_3.setPreferredSize(new Dimension(200, 250));
+		}
+		return list_3;
+	}
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setBackground(new Color(128, 128, 128));
+			scrollPane.setBorder(new TitledBorder(null, "Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			scrollPane.setPreferredSize(new Dimension(2, 100));
+			scrollPane.setViewportView(getTextArea());
+		}
+		return scrollPane;
+	}
+	private JTextArea getTextArea() {
+		if (textArea == null) {
+			textArea = new JTextArea();
+			textArea.setAlignmentY(2.0f);
+			textArea.setAlignmentX(2.0f);
+		}
+		return textArea;
+	}
+}
