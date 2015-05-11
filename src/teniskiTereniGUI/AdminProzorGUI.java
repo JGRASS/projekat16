@@ -7,33 +7,64 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
+
 import java.awt.Dimension;
+
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
+
 import java.awt.Toolkit;
 import java.awt.FlowLayout;
+
 import javax.swing.JMenu;
 import javax.swing.UIManager;
+
 import java.awt.Color;
+
 import javax.swing.JMenuItem;
+
 import java.awt.Font;
+
 import javax.swing.AbstractListModel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
+
 import java.awt.ComponentOrientation;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JDesktopPane;
+
 import java.awt.GridLayout;
+
+import TeniskiTeren.TeniskiTeren;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.RowSpec;
+
 import java.awt.Component;
+
 import javax.swing.JTextArea;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+
+import java.util.Date;
+import java.util.Calendar;
+
+import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AdminProzorGUI extends JFrame {
 	private JMenuBar menuBar;
@@ -46,18 +77,17 @@ public class AdminProzorGUI extends JFrame {
 	private JMenuItem mntmExit;
 	private JPanel panel;
 	private JPanel panel_2;
-	private JList list;
-	private JList list_1;
-	private JList list_2;
 	private JButton btnDodajTeren;
 	private JButton btnIzbrisiTeren;
 	private JButton btnDodajRezervaciju;
 	private JButton btnIzbrisiRezervaciju;
 	private JMenuItem mntmOProgramu;
 	private JMenuItem mntmPomoc;
-	private JList list_3;
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
+	private JSpinner spinner;
+	private JLabel lblNewLabel;
+	private JList list;
     
 	/**
 	 * Launch the application.
@@ -83,7 +113,7 @@ public class AdminProzorGUI extends JFrame {
 		setMinimumSize(new Dimension(705, 435));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AdminProzorGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 708, 408);
+		setBounds(100, 100, 669, 435);
 		setJMenuBar(getMenuBar_1());
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		getContentPane().add(getScrollPane(), BorderLayout.SOUTH);
@@ -169,59 +199,10 @@ public class AdminProzorGUI extends JFrame {
 			panel_2.setBackground(new Color(128, 128, 128));
 			panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			panel_2.setLayout(null);
+			panel_2.add(getLblNewLabel());
 			panel_2.add(getList());
-			panel_2.add(getList_1());
-			panel_2.add(getList_2());
-			panel_2.add(getList_3());
 		}
 		return panel_2;
-	}
-	private JList getList() {
-		if (list == null) {
-			list = new JList();
-			list.setBounds(10, 7, 90, 250);
-			list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			list.setPreferredSize(new Dimension(90, 250));
-		}
-		return list;
-	}
-	private JList getList_1() {
-		if (list_1 == null) {
-			list_1 = new JList();
-			list_1.setBounds(110, 7, 97, 149);
-			list_1.setForeground(new Color(128, 128, 128));
-			list_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-			list_1.setModel(new AbstractListModel() {
-				String[] values = new String[] {"Ponedeljak", "Utorak", "Sreda", "Cetvrtak", "Petak", "Subota", "Nedelja"};
-				public int getSize() {
-					return values.length;
-				}
-				public Object getElementAt(int index) {
-					return values[index];
-				}
-			});
-			list_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			list_1.setPreferredSize(new Dimension(90, 250));
-		}
-		return list_1;
-	}
-	private JList getList_2() {
-		if (list_2 == null) {
-			list_2 = new JList();
-			list_2.setModel(new AbstractListModel() {
-				String[] values = new String[] {};
-				public int getSize() {
-					return values.length;
-				}
-				public Object getElementAt(int index) {
-					return values[index];
-				}
-			});
-			list_2.setBounds(217, 7, 100, 250);
-			list_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			list_2.setPreferredSize(new Dimension(100, 250));
-		}
-		return list_2;
 	}
 	private JButton getBtnDodajTeren() {
 		if (btnDodajTeren == null) {
@@ -242,6 +223,11 @@ public class AdminProzorGUI extends JFrame {
 	private JButton getBtnDodajRezervaciju() {
 		if (btnDodajRezervaciju == null) {
 			btnDodajRezervaciju = new JButton("Dodaj rezervaciju");
+			btnDodajRezervaciju.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziRezervisiGUI();
+				}
+			});
 			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
 			btnDodajRezervaciju.setPreferredSize(new Dimension(135, 30));
 		}
@@ -250,6 +236,14 @@ public class AdminProzorGUI extends JFrame {
 	private JButton getBtnIzbrisiRezervaciju() {
 		if (btnIzbrisiRezervaciju == null) {
 			btnIzbrisiRezervaciju = new JButton("Izbrisi rezervaciju");
+			btnIzbrisiRezervaciju.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if(list.getSelectedValue() != null) {
+						TeniskiTeren teren = (TeniskiTeren) list.getSelectedValue();
+						GUIKOntroler.obrisiRezervaciju(teren);
+					}
+				}
+			});
 			btnIzbrisiRezervaciju.setBackground(new Color(128, 128, 128));
 			btnIzbrisiRezervaciju.setPreferredSize(new Dimension(135, 30));
 		}
@@ -267,21 +261,12 @@ public class AdminProzorGUI extends JFrame {
 		}
 		return mntmPomoc;
 	}
-	private JList getList_3() {
-		if (list_3 == null) {
-			list_3 = new JList();
-			list_3.setBounds(328, 7, 217, 250);
-			list_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			list_3.setPreferredSize(new Dimension(200, 250));
-		}
-		return list_3;
-	}
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
 			scrollPane.setBackground(new Color(128, 128, 128));
 			scrollPane.setBorder(new TitledBorder(null, "Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			scrollPane.setPreferredSize(new Dimension(2, 100));
+			scrollPane.setPreferredSize(new Dimension(2, 90));
 			scrollPane.setViewportView(getTextArea());
 		}
 		return scrollPane;
@@ -293,5 +278,23 @@ public class AdminProzorGUI extends JFrame {
 			textArea.setAlignmentX(2.0f);
 		}
 		return textArea;
+	}
+	private JLabel getLblNewLabel() {
+		if (lblNewLabel == null) {
+			lblNewLabel = new JLabel("Rezervacije:");
+			lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			lblNewLabel.setForeground(new Color(50, 205, 50));
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel.setBounds(10, 11, 158, 26);
+		}
+		return lblNewLabel;
+	}
+	private JList getList() {
+		if (list == null) {
+			list = new JList();
+			list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list.setBounds(37, 41, 473, 234);
+		}
+		return list;
 	}
 }
