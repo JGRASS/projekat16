@@ -7,24 +7,32 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
+
 import javax.swing.JPasswordField;
+
 import java.awt.Color;
+
 import javax.swing.DropMode;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PrijaviSeGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JTextField textField;
+	private JTextField kornisickoIme;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
-	private JPasswordField passwordField;
+	private JPasswordField sifra;
 
 	/**
 	 * Launch the application.
@@ -50,7 +58,7 @@ public class PrijaviSeGUI extends JFrame {
 		setTitle("Prijava");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(PrijaviSeGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 358, 260);
+		setBounds(100, 100, 344, 225);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(128, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,10 +66,10 @@ public class PrijaviSeGUI extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getLblNewLabel());
 		contentPane.add(getLblNewLabel_1());
-		contentPane.add(getTextField());
+		contentPane.add(getKornisickoIme());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
-		contentPane.add(getPasswordField());
+		contentPane.add(getSifra());
 	}
 
 	private JLabel getLblNewLabel() {
@@ -69,7 +77,7 @@ public class PrijaviSeGUI extends JFrame {
 			lblNewLabel = new JLabel("Korisnicko ime:");
 			lblNewLabel.setForeground(new Color(50, 205, 50));
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel.setBounds(51, 57, 129, 14);
+			lblNewLabel.setBounds(30, 28, 129, 14);
 		}
 		return lblNewLabel;
 	}
@@ -78,23 +86,32 @@ public class PrijaviSeGUI extends JFrame {
 			lblNewLabel_1 = new JLabel("\u0160ifra:");
 			lblNewLabel_1.setForeground(new Color(50, 205, 50));
 			lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_1.setBounds(51, 109, 46, 14);
+			lblNewLabel_1.setBounds(30, 63, 46, 14);
 		}
 		return lblNewLabel_1;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setBounds(190, 54, 130, 20);
-			textField.setColumns(10);
+	private JTextField getKornisickoIme() {
+		if (kornisickoIme == null) {
+			kornisickoIme = new JTextField();
+			kornisickoIme.setBounds(169, 27, 130, 20);
+			kornisickoIme.setColumns(10);
 		}
-		return textField;
+		return kornisickoIme;
 	}
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Prijavi se");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if(kornisickoIme.getText().equals("Bojan") && sifra.getText().equals("Tomic"))
+						GUIKOntroler.prikaziAdminProzorGUI();
+					else
+						JOptionPane.showMessageDialog(contentPane, "Pogresno korisnicko ime i lozinka");
+						
+				}
+			});
 			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnNewButton.setBounds(59, 160, 102, 52);
+			btnNewButton.setBounds(30, 116, 102, 52);
 		}
 		return btnNewButton;
 	}
@@ -102,15 +119,15 @@ public class PrijaviSeGUI extends JFrame {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Odustani");
 			btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnNewButton_1.setBounds(218, 160, 102, 52);
+			btnNewButton_1.setBounds(197, 116, 102, 52);
 		}
 		return btnNewButton_1;
 	}
-	private JPasswordField getPasswordField() {
-		if (passwordField == null) {
-			passwordField = new JPasswordField();
-			passwordField.setBounds(190, 108, 130, 20);
+	private JPasswordField getSifra() {
+		if (sifra == null) {
+			sifra = new JPasswordField();
+			sifra.setBounds(169, 63, 130, 20);
 		}
-		return passwordField;
+		return sifra;
 	}
 }

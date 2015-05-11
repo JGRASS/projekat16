@@ -10,12 +10,33 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
+
 import java.awt.Dimension;
+
 import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.AbstractListModel;
+
+import java.awt.Font;
+import java.awt.FlowLayout;
+
+import javax.swing.JLabel;
+
+import java.awt.Color;
+
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+
+import TeniskiTeren.TeniskiTeren;
+
+import java.util.Date;
+import java.util.Calendar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GlavniProzorGUI extends JFrame {
 
@@ -29,13 +50,16 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JList list;
-	private JList list_1;
-	private JList list_2;
 	private JList list_3;
 	private JButton btnDodajRezervaciju;
 	private JButton btnObrisiRezervaciju;
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
+	private JMenuItem mntmSave;
+	private JMenuItem mntmOpen;
+	private JMenuItem mntmExit;
+	private JLabel lblRezervacije;
+	private JSpinner spinner;
 
 	/**
 	 * Launch the application.
@@ -58,7 +82,7 @@ public class GlavniProzorGUI extends JFrame {
 	 */
 	public GlavniProzorGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 706, 429);
+		setBounds(100, 100, 685, 467);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,6 +106,9 @@ public class GlavniProzorGUI extends JFrame {
 		if (mnFile == null) {
 			mnFile = new JMenu("File");
 			mnFile.add(getMntmNovaRezervacija());
+			mnFile.add(getMntmSave());
+			mnFile.add(getMntmOpen());
+			mnFile.add(getMntmExit());
 		}
 		return mnFile;
 	}
@@ -107,7 +134,11 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setPreferredSize(new Dimension(100, 10));
+			panel.setBackground(new Color(128, 128, 128));
+			FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+			flowLayout.setVgap(15);
+			panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			panel.setPreferredSize(new Dimension(135, 10));
 			panel.add(getBtnDodajRezervaciju());
 			panel.add(getBtnObrisiRezervaciju());
 		}
@@ -116,6 +147,7 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
+			panel_1.setBackground(new Color(128, 128, 128));
 			panel_1.setBorder(new TitledBorder(null, "Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_1.setPreferredSize(new Dimension(10, 80));
 			panel_1.setLayout(new BorderLayout(0, 0));
@@ -126,11 +158,12 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
+			panel_2.setBackground(new Color(128, 128, 128));
+			panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			panel_2.setLayout(null);
 			panel_2.add(getList());
-			panel_2.add(getList_1());
-			panel_2.add(getList_2());
 			panel_2.add(getList_3());
+			panel_2.add(getLblRezervacije());
 		}
 		return panel_2;
 	}
@@ -141,36 +174,38 @@ public class GlavniProzorGUI extends JFrame {
 		}
 		return list;
 	}
-	private JList getList_1() {
-		if (list_1 == null) {
-			list_1 = new JList();
-			list_1.setBounds(10, 11, 110, 178);
-		}
-		return list_1;
-	}
-	private JList getList_2() {
-		if (list_2 == null) {
-			list_2 = new JList();
-			list_2.setBounds(130, 11, 120, 178);
-		}
-		return list_2;
-	}
 	private JList getList_3() {
 		if (list_3 == null) {
 			list_3 = new JList();
-			list_3.setBounds(260, 11, 210, 178);
+			list_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			list_3.setBounds(20, 46, 453, 241);
 		}
 		return list_3;
 	}
 	private JButton getBtnDodajRezervaciju() {
 		if (btnDodajRezervaciju == null) {
 			btnDodajRezervaciju = new JButton("Dodaj rezervaciju");
+			btnDodajRezervaciju.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziRezervisiGUI();
+				}
+			});
+			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
 		}
 		return btnDodajRezervaciju;
 	}
 	private JButton getBtnObrisiRezervaciju() {
 		if (btnObrisiRezervaciju == null) {
 			btnObrisiRezervaciju = new JButton("Obrisi rezervaciju");
+			btnObrisiRezervaciju.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if(list.getSelectedValue() != null) {
+						TeniskiTeren teren = (TeniskiTeren) list.getSelectedValue();
+						GUIKOntroler.obrisiRezervaciju(teren);
+					}
+				}
+			});
+			btnObrisiRezervaciju.setBackground(new Color(128, 128, 128));
 		}
 		return btnObrisiRezervaciju;
 	}
@@ -186,5 +221,32 @@ public class GlavniProzorGUI extends JFrame {
 			textArea = new JTextArea();
 		}
 		return textArea;
+	}
+	private JMenuItem getMntmSave() {
+		if (mntmSave == null) {
+			mntmSave = new JMenuItem("Save");
+		}
+		return mntmSave;
+	}
+	private JMenuItem getMntmOpen() {
+		if (mntmOpen == null) {
+			mntmOpen = new JMenuItem("Open");
+		}
+		return mntmOpen;
+	}
+	private JMenuItem getMntmExit() {
+		if (mntmExit == null) {
+			mntmExit = new JMenuItem("Exit");
+		}
+		return mntmExit;
+	}
+	private JLabel getLblRezervacije() {
+		if (lblRezervacije == null) {
+			lblRezervacije = new JLabel("Rezervacije:");
+			lblRezervacije.setForeground(new Color(50, 205, 50));
+			lblRezervacije.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblRezervacije.setBounds(21, 21, 96, 14);
+		}
+		return lblRezervacije;
 	}
 }

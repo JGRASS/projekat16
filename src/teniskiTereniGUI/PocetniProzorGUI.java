@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PocetniProzorGUI extends JFrame {
 
@@ -56,6 +58,11 @@ public class PocetniProzorGUI extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Administrator");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziPrijaviSeGUI();
+				}
+			});
 			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnNewButton.setForeground(new Color(128, 128, 128));
 			btnNewButton.setBounds(38, 143, 144, 54);
@@ -76,7 +83,7 @@ public class PocetniProzorGUI extends JFrame {
 			lblNewLabel = new JLabel("Izaberi korisnika");
 			lblNewLabel.setForeground(new Color(50, 205, 50));
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-			lblNewLabel.setBounds(38, 61, 203, 37);
+			lblNewLabel.setBounds(119, 57, 177, 37);
 		}
 		return lblNewLabel;
 	}
