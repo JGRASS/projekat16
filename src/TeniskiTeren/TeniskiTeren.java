@@ -1,6 +1,10 @@
 package TeniskiTeren;
 
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
+
+
+
 
 /**
  * Predstavlja 1 Teniski Teren
@@ -11,11 +15,13 @@ public class TeniskiTeren {
 	
 	private String nazivTerena; //predstavlja naziv ili jednostavno broj terena (Teren br.1)
 	private String tipTerena; //predstavlja koja je podloga (sljaka,beton itd)
+
 	private GregorianCalendar datum;
 	private int sat;
 	private String imeKorisnika;
 	private String brojTelefona;
 	
+
 	/**
 	 * Vraca naziv Teniskog terena
 	 * @return
@@ -126,6 +132,8 @@ public class TeniskiTeren {
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 	
