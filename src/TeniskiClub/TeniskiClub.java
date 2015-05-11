@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import sistemskeoperacije.SODodajTeniskiTeren;
 import sistemskeoperacije.SOIzbrisiTeniskiTeren;
+import sistemskeoperacije.SOIzbrisiTeniskiTerenObject;
 
 /**
  * Klasa koja predstavlja jedan Teniski Klub
@@ -83,13 +84,33 @@ public class TeniskiClub {
 		return "Naziv cluba["+nazivTeniskogCluba+"] br.telefona["+brojTelefonaTeniskogCluba+"] Maticni broj(id)["+idTeniskogCluba+"]";
 	}
 	
-	
+	/**
+	 * Dodaje novi Tenski teren u listu vezana za jedan club
+	 * @param naziv
+	 * @param tipTerena
+	 * @param dalijezatvoren
+	 * @param tereni
+	 */
 	public void dodajTeniskiTeren(String naziv, String tipTerena,boolean dalijezatvoren,LinkedList<TeniskiTeren> tereni){
 		SODodajTeniskiTeren.dodajTeniskiTeren(naziv, tipTerena, dalijezatvoren, tereni);
 	}
+	/**
+	 * brise Teniski teren
+	 * @param naziv
+	 * @param tipTerena
+	 * @param dalijezatvoren
+	 * @param tereni
+	 */
 	public void izbrisiTenskiTeren(String naziv, String tipTerena,boolean dalijezatvoren,LinkedList<TeniskiTeren> tereni){
 		SOIzbrisiTeniskiTeren.izbrisiTenskiTeren(naziv, tipTerena, dalijezatvoren, tereni);
 	}
-	
+	/**
+	 * Alternativni metod brisanja iz liste ako imamo pointer ka Teniskom terenu
+	 * @param teren
+	 * @param tereni
+	 */
+	public void izbrisiTeniskiTerenObject(TeniskiTeren teren,LinkedList<TeniskiTeren> tereni){
+		SOIzbrisiTeniskiTerenObject.izbrisiTeniskiTerenObject(teren, tereni);
+	}
 
 }

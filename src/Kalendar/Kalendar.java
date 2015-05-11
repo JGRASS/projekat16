@@ -1,13 +1,14 @@
 package Kalendar;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Kalendar {
 	
-	private GregorianCalendar time= new GregorianCalendar();
+	public GregorianCalendar time= new GregorianCalendar();
 	private int sat;
 	private String dan;
-	
+	public Date date= new Date();
 	
 	public GregorianCalendar getTime() {
 		return time;
