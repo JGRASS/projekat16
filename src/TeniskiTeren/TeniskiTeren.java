@@ -1,4 +1,9 @@
 package TeniskiTeren;
+
+import java.util.LinkedList;
+import sistemskeoperacije.*;
+import Kalendar.Kalendar;
+
 /**
  * Predstavlja 1 Teniski Teren
  * @author Nikola
@@ -9,6 +14,7 @@ public class TeniskiTeren {
 	private String nazivTerena; //predstavlja naziv ili jednostavno broj terena (Teren br.1)
 	private String tipTerena; //predstavlja koja je podloga (sljaka,beton itd)
 	private boolean daLiJeZatvoren; //da li je u zatvorenom prostoru
+	private LinkedList<Kalendar> Kalendar=new LinkedList<Kalendar>();
 	/**
 	 * Vraca naziv Teniskog terena
 	 * @return
@@ -70,5 +76,7 @@ public class TeniskiTeren {
 		// TODO Auto-generated method stub
 		return "Naziv Teniskog terena: "+this.nazivTerena+"\t tip: "+this.tipTerena+"\t zatvoren:"+isDaLiJeZatvoren();
 	}
+	
+	
 	
 }

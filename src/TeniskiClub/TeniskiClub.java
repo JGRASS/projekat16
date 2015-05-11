@@ -1,4 +1,11 @@
 package TeniskiClub;
+import TeniskiTeren.*;
+
+import java.util.LinkedList;
+
+import sistemskeoperacije.SODodajTeniskiTeren;
+import sistemskeoperacije.SOIzbrisiTeniskiTeren;
+
 /**
  * Klasa koja predstavlja jedan Teniski Klub
  * @author Nikola
@@ -12,6 +19,8 @@ public class TeniskiClub {
 	 * Vraca naziv Teniskog kluba
 	 * @return
 	 */
+	private LinkedList<TeniskiTeren> tereni= new LinkedList<TeniskiTeren>();
+	
 	public String getNazivTeniskogCluba() {
 		return nazivTeniskogCluba;
 	}
@@ -75,7 +84,12 @@ public class TeniskiClub {
 	}
 	
 	
-	
+	public void dodajTeniskiTeren(String naziv, String tipTerena,boolean dalijezatvoren,LinkedList<TeniskiTeren> tereni){
+		SODodajTeniskiTeren.dodajTeniskiTeren(naziv, tipTerena, dalijezatvoren, tereni);
+	}
+	public void izbrisiTenskiTeren(String naziv, String tipTerena,boolean dalijezatvoren,LinkedList<TeniskiTeren> tereni){
+		SOIzbrisiTeniskiTeren.izbrisiTenskiTeren(naziv, tipTerena, dalijezatvoren, tereni);
+	}
 	
 
 }
