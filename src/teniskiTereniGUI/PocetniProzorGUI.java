@@ -61,7 +61,10 @@ public class PocetniProzorGUI extends JFrame {
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKOntroler.prikaziGlavniProzorGUI();
+
 					dispose();
+
+
 				}
 			});
 			btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));

@@ -89,14 +89,8 @@ public class PrijaviSeGUI extends JFrame {
 			btnNewButton = new JButton("Prijavi se");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					char[] sifra1 = sifra.getPassword();
-					char[] sifra2 = new char[5];
-					sifra2[0]='t';
-					sifra2[1]='o';
-					sifra2[2]='m';
-					sifra2[3]='i';
-					sifra2[4]='c';
-					if(kornisickoIme.getText().equals("bojan")   ){
+					String password = new String(sifra.getPassword());
+					if(kornisickoIme.getText().equals("nikola") && password.equals("tesla")){
 						GUIKOntroler.prikaziAdminProzorGUI();
 					 dispose();
 					 GUIKOntroler.zatvoriPocetniProzor();}

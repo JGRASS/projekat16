@@ -1,8 +1,9 @@
 
 	package teniskiTeren;
 
-	import java.util.GregorianCalendar;
-	import java.util.LinkedList;
+	import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.LinkedList;
 
 
 
@@ -17,7 +18,7 @@
 		private String nazivTerena; //predstavlja naziv ili jednostavno broj terena (Teren br.1)
 		private String tipTerena; //predstavlja koja je podloga (sljaka,beton itd)
 
-		private GregorianCalendar datum;
+		private Date datum;
 		private int sat;
 		private String imeKorisnika;
 		private String brojTelefona;
@@ -55,11 +56,11 @@
 				throw new RuntimeException("Pogresno unet tip");
 			this.tipTerena = tipTerena;
 		}
-		public GregorianCalendar getDatum() {
+		public Date getDatum() {
 			return datum;
 		}
-		public void setDatum(GregorianCalendar datum) {
-			this.datum = datum;
+		public void setDatum(Date date) {
+			this.datum = date;
 		}
 		public int getSat() {
 			return sat;
@@ -104,34 +105,9 @@
 			if (getClass() != obj.getClass())
 				return false;
 			TeniskiTeren other = (TeniskiTeren) obj;
-			if (brojTelefona == null) {
-				if (other.brojTelefona != null)
-					return false;
-			} else if (!brojTelefona.equals(other.brojTelefona))
-				return false;
-			if (datum == null) {
-				if (other.datum != null)
-					return false;
-			} else if (!datum.equals(other.datum))
-				return false;
-			if (imeKorisnika == null) {
-				if (other.imeKorisnika != null)
-					return false;
-			} else if (!imeKorisnika.equals(other.imeKorisnika))
-				return false;
-			if (nazivTerena == null) {
-				if (other.nazivTerena != null)
-					return false;
-			} else if (!nazivTerena.equals(other.nazivTerena))
-				return false;
-			if (sat != other.sat)
-				return false;
-			if (tipTerena == null) {
-				if (other.tipTerena != null)
-					return false;
-			} else if (!tipTerena.equals(other.tipTerena))
-				return false;
-			return true;
+			if(other.getDatum().equals(datum) && other.getSat()==sat && other.getNazivTerena().equals(nazivTerena) && other.getTipTerena().equals(tipTerena))
+				return true;	
+			return false;
 		}
 		
 		
