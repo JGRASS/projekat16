@@ -1,4 +1,4 @@
-package SistemskeOperacije;
+package sistemskeOperacije;
 import java.util.LinkedList;
 
 import teniskiTeren.*;
