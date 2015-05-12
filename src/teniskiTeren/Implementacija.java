@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
@@ -18,7 +19,7 @@ public class Implementacija {
 	
 	private static LinkedList<TeniskiTeren> tereniKojiPostoje = new LinkedList<TeniskiTeren>(); //Ovde moramo da imamo listu Terena sa ful opisom koji sadrzi taj neki klub
 	
-	public void rezervisi (String nazivTerena, String tipTerena, GregorianCalendar datum , int sat) {
+	public void rezervisi (String nazivTerena, String tipTerena, Date datum , int sat) {
 		TeniskiTeren t = new TeniskiTeren();
 		t.setNazivTerena(nazivTerena);
 		t.setTipTerena(tipTerena);
@@ -32,7 +33,7 @@ public class Implementacija {
 		
 	}
 	
-	public void izbrisiRezervaciju (String nazivTerena, String tipTerena, GregorianCalendar datum , int sat) {
+	public void izbrisiRezervaciju (String nazivTerena, String tipTerena, Date datum , int sat) {
 		TeniskiTeren t = new TeniskiTeren();
 		t.setNazivTerena(nazivTerena);
 		t.setTipTerena(tipTerena);
@@ -45,7 +46,7 @@ public class Implementacija {
 			throw new RuntimeException("Rezervacija ne postoji.");
 	}
 	
-	public String vratiTeren(String tip,int sat,GregorianCalendar datum){
+	public String vratiTeren(String tip,int sat,Date datum){
 		//Trajko uradi ovo
 		String nazivST=null;
 		LinkedList<TeniskiTeren> slobodniTereni=new LinkedList<>();

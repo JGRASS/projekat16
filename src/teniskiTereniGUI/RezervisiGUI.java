@@ -130,7 +130,7 @@ public class RezervisiGUI extends JFrame {
 					TeniskiTeren teren = new TeniskiTeren();
 					teren.setImeKorisnika(imeIPrezime.getText());
 					teren.setBrojTelefona(brojTelefona.getText());
-					teren.setDatum((GregorianCalendar) dan.getValue());
+					teren.setDatum((Date) dan.getValue());
 					int sat = 0;
 					if(list.isSelectedIndex(0)){
 						 sat=8;
@@ -169,14 +169,9 @@ public class RezervisiGUI extends JFrame {
 						JOptionPane.showMessageDialog(contentPane, "Izaberite vreme");
 						 return;	
 					}
-						
-					if (tip.getSelectedItem().equals("beton")) 
-						teren.setTipTerena("beton");
-					if (tip.getSelectedItem().equals("sljaka")) 
-						teren.setTipTerena("sljaka");
-					if (tip.getSelectedItem().equals("trava")) 
-						teren.setTipTerena("trava");
-					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()),sat,(GregorianCalendar) dan.getValue());
+					//trebalo bi da sad ovo radi 
+					teren.setTipTerena((String) tip.getSelectedItem());
+					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()),sat,(Date) dan.getValue());
 					 if(nazivTerena==null){
 						 JOptionPane.showMessageDialog(contentPane, "Nema slobodnih termina");
 						 return;
@@ -255,7 +250,7 @@ public class RezervisiGUI extends JFrame {
 	private JTextField getBrojTelefona() {
 		if (brojTelefona == null) {
 			brojTelefona = new JTextField();
-			brojTelefona.setVisible(false);
+			brojTelefona.setVisible(true);
 			brojTelefona.setToolTipText("Unesite Vas broj telefona");
 			brojTelefona.setBounds(10, 81, 167, 20);
 			brojTelefona.setColumns(10);
@@ -265,7 +260,7 @@ public class RezervisiGUI extends JFrame {
 	private JLabel getLblBrojTelefona() {
 		if (lblBrojTelefona == null) {
 			lblBrojTelefona = new JLabel("Broj telefona:");
-			lblBrojTelefona.setVisible(false);
+			lblBrojTelefona.setVisible(true);
 			lblBrojTelefona.setForeground(new Color(50, 205, 50));
 			lblBrojTelefona.setFont(new Font("Tahoma", Font.BOLD, 14));
 			lblBrojTelefona.setBounds(10, 65, 118, 14);

@@ -1,8 +1,9 @@
 
 	package teniskiTeren;
 
-	import java.util.GregorianCalendar;
-	import java.util.LinkedList;
+	import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.LinkedList;
 
 
 
@@ -17,7 +18,7 @@
 		private String nazivTerena; //predstavlja naziv ili jednostavno broj terena (Teren br.1)
 		private String tipTerena; //predstavlja koja je podloga (sljaka,beton itd)
 
-		private GregorianCalendar datum;
+		private Date datum;
 		private int sat;
 		private String imeKorisnika;
 		private String brojTelefona;
@@ -55,11 +56,11 @@
 				throw new RuntimeException("Pogresno unet tip");
 			this.tipTerena = tipTerena;
 		}
-		public GregorianCalendar getDatum() {
+		public Date getDatum() {
 			return datum;
 		}
-		public void setDatum(GregorianCalendar datum) {
-			this.datum = datum;
+		public void setDatum(Date date) {
+			this.datum = date;
 		}
 		public int getSat() {
 			return sat;

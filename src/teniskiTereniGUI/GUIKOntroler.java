@@ -1,5 +1,6 @@
 package teniskiTereniGUI;
 import java.awt.EventQueue;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
@@ -60,7 +61,7 @@ public class GUIKOntroler {
 	public static void obrisiRezervaciju(TeniskiTeren teren){
 		String nazivTerena = teren.getNazivTerena();
 		String tipTerena = teren.getTipTerena();
-		GregorianCalendar datum = teren.getDatum();
+		Date datum = teren.getDatum();
 		int sat = teren.getSat();
 		
 		sistem.izbrisiRezervaciju(nazivTerena, tipTerena, datum, sat);
@@ -70,12 +71,12 @@ public class GUIKOntroler {
 	public static void dodajRezervaciju(TeniskiTeren teren) {
 		String nazivTerena = teren.getNazivTerena();
 		String tipTerena = teren.getTipTerena();
-		GregorianCalendar datum = teren.getDatum();
+		Date datum = teren.getDatum();
 		int sat = teren.getSat();
 		
 		sistem.rezervisi(nazivTerena, tipTerena, datum, sat);
 	}
-	public static String vratiListuTerena(String tip,int sat,GregorianCalendar datum){
+	public static String vratiListuTerena(String tip,int sat,Date datum){
 		return sistem.vratiTeren(tip,sat,datum);
 		
 	}
