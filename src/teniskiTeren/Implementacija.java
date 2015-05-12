@@ -1,5 +1,14 @@
 package teniskiTeren;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
@@ -53,4 +62,96 @@ public class Implementacija {
 		}
 		return nazivST;
 	}
+	
+	public void sacuvaj(){
+		
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("rezervacije.out")));
+			ObjectOutputStream out2 = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("tereniKojiPostoje.out")));
+			
+			for(int i=0;i<rezervacije.size();i++){
+				out.writeObject(rezervacije.get(i));
+			}
+			out.close();
+			for(int i=0;i<tereniKojiPostoje.size();i++){
+				out2.writeObject(tereniKojiPostoje.get(i));
+			}
+			out2.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Greska pri sacuvanju podataka");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Greska pri sacuvanju podataka");
+		}
+		
+	}
+	public void load(){
+		
+			try {
+				ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("rezervacije.out")));
+				LinkedList<TeniskiTeren> r = new LinkedList<>();
+				r.clear();
+				try{
+					while(true){
+						TeniskiTeren o  = (TeniskiTeren)  (in.readObject());
+						r.add(o);
+					}
+				}catch (EOFException e){
+					in.close();
+					rezervacije.clear();
+					rezervacije=r;
+
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+
+			}
+			try {
+				ObjectInputStream in2 = new ObjectInputStream(new BufferedInputStream(new FileInputStream("tereniKojiPostoje.out")));
+				LinkedList<TeniskiTeren> t = new LinkedList<>();
+				t.clear();
+				try{
+					while(true){
+						TeniskiTeren a  = (TeniskiTeren)  (in2.readObject());
+						t.add(a);
+					}
+				}catch (EOFException e){
+					in2.close();
+					tereniKojiPostoje.clear();
+					tereniKojiPostoje=t;
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Greska pri ucitavnju");
+
+			}
+			
+			
+	}
+	
 }
