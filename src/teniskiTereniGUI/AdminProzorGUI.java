@@ -101,7 +101,7 @@ public class AdminProzorGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				
+			GUIKOntroler.ugasiAplikacijuAdminProzor();	
 				
 			}
 		});
@@ -171,6 +171,11 @@ public class AdminProzorGUI extends JFrame {
 	private JMenuItem getMntmExit() {
 		if (mntmExit == null) {
 			mntmExit = new JMenuItem("Exit");
+			mntmExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.ugasiAplikacijuAdminProzor();
+				}
+			});
 		}
 		return mntmExit;
 	}
@@ -257,6 +262,11 @@ public class AdminProzorGUI extends JFrame {
 	private JMenuItem getMntmOProgramu() {
 		if (mntmOProgramu == null) {
 			mntmOProgramu = new JMenuItem("O programu");
+			mntmOProgramu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziAboutProzorGlavniProzor();
+				}
+			});
 		}
 		return mntmOProgramu;
 	}
@@ -306,8 +316,5 @@ public class AdminProzorGUI extends JFrame {
 	public void dodajStatusAdmin(String string){
 		textArea.append(string);	
 	}
-	public void zatvoriProzorAdmin(){
-		
-		
-	}
+	
 }

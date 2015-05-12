@@ -58,6 +58,12 @@ public class PocetniProzorGUI extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Zaposleni");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziGlavniProzorGUI();
+					dispose();
+				}
+			});
 			btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnNewButton_1.setForeground(new Color(128, 128, 128));
 			btnNewButton_1.setBounds(206, 142, 144, 54);

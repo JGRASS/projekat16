@@ -37,6 +37,11 @@ import java.util.Date;
 import java.util.Calendar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GlavniProzorGUI extends JFrame {
 
@@ -60,27 +65,22 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenuItem mntmExit;
 	private JLabel lblRezervacije;
 	private JSpinner spinner;
+	private JMenuItem mntmPomoc;
+	private JMenuItem mntmOProgramu;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GlavniProzorGUI frame = new GlavniProzorGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public GlavniProzorGUI() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				GUIKOntroler.ugasiAplikacijuGlavniProzor();
+			}
+		});
+		setTitle("Zaposleni");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 685, 467);
 		setJMenuBar(getMenuBar_1());
@@ -115,19 +115,26 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenu getMnHelp() {
 		if (mnHelp == null) {
 			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmPomoc());
 		}
 		return mnHelp;
 	}
 	private JMenu getMnAbout() {
 		if (mnAbout == null) {
 			mnAbout = new JMenu("About");
+			mnAbout.add(getMntmOProgramu());
 		}
 		return mnAbout;
 	}
 	private JMenuItem getMntmNovaRezervacija() {
 		if (mntmNovaRezervacija == null) {
-			mntmNovaRezervacija = new JMenuItem("Nova rezervacija");
-			mntmNovaRezervacija.setIcon(null);
+			mntmNovaRezervacija = new JMenuItem("New");
+			mntmNovaRezervacija.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziRezervisiGUI();
+				}
+			});
+			mntmNovaRezervacija.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487165_Add.png")));
 		}
 		return mntmNovaRezervacija;
 	}
@@ -138,7 +145,7 @@ public class GlavniProzorGUI extends JFrame {
 			FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 			flowLayout.setVgap(15);
 			panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			panel.setPreferredSize(new Dimension(135, 10));
+			panel.setPreferredSize(new Dimension(150, 10));
 			panel.add(getBtnDodajRezervaciju());
 			panel.add(getBtnObrisiRezervaciju());
 		}
@@ -185,6 +192,10 @@ public class GlavniProzorGUI extends JFrame {
 	private JButton getBtnDodajRezervaciju() {
 		if (btnDodajRezervaciju == null) {
 			btnDodajRezervaciju = new JButton("Dodaj rezervaciju");
+			btnDodajRezervaciju.setFont(new Font("Tahoma", Font.BOLD, 11));
+			btnDodajRezervaciju.setForeground(new Color(50, 205, 50));
+			btnDodajRezervaciju.setBorder(UIManager.getBorder("Button.border"));
+			btnDodajRezervaciju.setPreferredSize(new Dimension(140, 45));
 			btnDodajRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKOntroler.prikaziRezervisiGUI();
@@ -197,6 +208,10 @@ public class GlavniProzorGUI extends JFrame {
 	private JButton getBtnObrisiRezervaciju() {
 		if (btnObrisiRezervaciju == null) {
 			btnObrisiRezervaciju = new JButton("Obrisi rezervaciju");
+			btnObrisiRezervaciju.setFont(new Font("Tahoma", Font.BOLD, 11));
+			btnObrisiRezervaciju.setForeground(new Color(50, 205, 50));
+			btnObrisiRezervaciju.setBorder(UIManager.getBorder("Button.border"));
+			btnObrisiRezervaciju.setPreferredSize(new Dimension(140, 45));
 			btnObrisiRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list.getSelectedValue() != null) {
@@ -226,18 +241,26 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenuItem getMntmSave() {
 		if (mntmSave == null) {
 			mntmSave = new JMenuItem("Save");
+			mntmSave.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487204_Save.png")));
 		}
 		return mntmSave;
 	}
 	private JMenuItem getMntmOpen() {
 		if (mntmOpen == null) {
 			mntmOpen = new JMenuItem("Open");
+			mntmOpen.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487446_Open_v2.png")));
 		}
 		return mntmOpen;
 	}
 	private JMenuItem getMntmExit() {
 		if (mntmExit == null) {
 			mntmExit = new JMenuItem("Exit");
+			mntmExit.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487154_Delete.png")));
+			mntmExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.ugasiAplikacijuGlavniProzor();
+				}
+			});
 		}
 		return mntmExit;
 	}
@@ -249,5 +272,23 @@ public class GlavniProzorGUI extends JFrame {
 			lblRezervacije.setBounds(21, 21, 96, 14);
 		}
 		return lblRezervacije;
+	}
+	private JMenuItem getMntmPomoc() {
+		if (mntmPomoc == null) {
+			mntmPomoc = new JMenuItem("Pomoc");
+			mntmPomoc.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487253_Help.png")));
+		}
+		return mntmPomoc;
+	}
+	private JMenuItem getMntmOProgramu() {
+		if (mntmOProgramu == null) {
+			mntmOProgramu = new JMenuItem("O programu");
+			mntmOProgramu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziAboutProzorGlavniProzor();
+				}
+			});
+		}
+		return mntmOProgramu;
 	}
 }
