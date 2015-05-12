@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UbaciTerenGUI extends JFrame {
 
@@ -127,19 +129,24 @@ public class UbaciTerenGUI extends JFrame {
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
-			btnOdustani.setBackground(new Color(128, 128, 128));
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dispose();
+				}
+			});
+			btnOdustani.setBackground(new Color(255, 255, 255));
 			btnOdustani.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnOdustani.setBounds(241, 103, 109, 46);
+			btnOdustani.setBounds(241, 103, 135, 46);
 		}
 		return btnOdustani;
 	}
 	private JButton getBtnDodajTeren() {
 		if (btnDodajTeren == null) {
 			btnDodajTeren = new JButton("Dodaj teren");
-			btnDodajTeren.setBackground(new Color(128, 128, 128));
+			btnDodajTeren.setBackground(new Color(255, 255, 255));
 			btnDodajTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnDodajTeren.setForeground(new Color(0, 0, 0));
-			btnDodajTeren.setBounds(75, 103, 109, 46);
+			btnDodajTeren.setBounds(75, 103, 135, 46);
 		}
 		return btnDodajTeren;
 	}

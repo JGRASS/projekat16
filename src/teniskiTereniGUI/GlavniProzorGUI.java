@@ -219,6 +219,7 @@ public class GlavniProzorGUI extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setEditable(false);
 		}
 		return textArea;
 	}

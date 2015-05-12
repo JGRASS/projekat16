@@ -21,21 +21,7 @@ public class PocetniProzorGUI extends JFrame {
 	private JButton btnNewButton_1;
 	private JLabel lblNewLabel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PocetniProzorGUI frame = new PocetniProzorGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.

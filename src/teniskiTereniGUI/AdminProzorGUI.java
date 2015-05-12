@@ -58,6 +58,7 @@ import java.util.Date;
 import java.util.Calendar;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
@@ -65,6 +66,8 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AdminProzorGUI extends JFrame {
 	private JMenuBar menuBar;
@@ -89,26 +92,19 @@ public class AdminProzorGUI extends JFrame {
 	private JLabel lblNewLabel;
 	private JList list;
     
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminProzorGUI frame = new AdminProzorGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public AdminProzorGUI() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				
+				
+			}
+		});
 		setTitle("Administrator");
 		setMinimumSize(new Dimension(705, 435));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AdminProzorGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
@@ -185,7 +181,7 @@ public class AdminProzorGUI extends JFrame {
 			panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 			flowLayout.setVgap(10);
-			panel.setPreferredSize(new Dimension(140, 10));
+			panel.setPreferredSize(new Dimension(155, 10));
 			panel.add(getBtnDodajTeren());
 			panel.add(getBtnIzbrisiTeren());
 			panel.add(getBtnDodajRezervaciju());
@@ -207,35 +203,44 @@ public class AdminProzorGUI extends JFrame {
 	private JButton getBtnDodajTeren() {
 		if (btnDodajTeren == null) {
 			btnDodajTeren = new JButton("Dodaj teren");
+			btnDodajTeren.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziDodajTerenProzor();
+				}
+			});
+			btnDodajTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnDodajTeren.setBackground(new Color(128, 128, 128));
-			btnDodajTeren.setPreferredSize(new Dimension(135, 30));
+			btnDodajTeren.setPreferredSize(new Dimension(150, 30));
 		}
 		return btnDodajTeren;
 	}
 	private JButton getBtnIzbrisiTeren() {
 		if (btnIzbrisiTeren == null) {
 			btnIzbrisiTeren = new JButton("Izbrisi teren");
+			btnIzbrisiTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnIzbrisiTeren.setBackground(new Color(128, 128, 128));
-			btnIzbrisiTeren.setPreferredSize(new Dimension(135, 30));
+			btnIzbrisiTeren.setPreferredSize(new Dimension(150, 30));
 		}
 		return btnIzbrisiTeren;
 	}
 	private JButton getBtnDodajRezervaciju() {
 		if (btnDodajRezervaciju == null) {
 			btnDodajRezervaciju = new JButton("Dodaj rezervaciju");
+			btnDodajRezervaciju.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnDodajRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKOntroler.prikaziRezervisiGUI();
 				}
 			});
 			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
-			btnDodajRezervaciju.setPreferredSize(new Dimension(135, 30));
+			btnDodajRezervaciju.setPreferredSize(new Dimension(150, 30));
 		}
 		return btnDodajRezervaciju;
 	}
 	private JButton getBtnIzbrisiRezervaciju() {
 		if (btnIzbrisiRezervaciju == null) {
 			btnIzbrisiRezervaciju = new JButton("Izbrisi rezervaciju");
+			btnIzbrisiRezervaciju.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnIzbrisiRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list.getSelectedValue() != null) {
@@ -245,7 +250,7 @@ public class AdminProzorGUI extends JFrame {
 				}
 			});
 			btnIzbrisiRezervaciju.setBackground(new Color(128, 128, 128));
-			btnIzbrisiRezervaciju.setPreferredSize(new Dimension(135, 30));
+			btnIzbrisiRezervaciju.setPreferredSize(new Dimension(150, 30));
 		}
 		return btnIzbrisiRezervaciju;
 	}
@@ -274,6 +279,7 @@ public class AdminProzorGUI extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setEditable(false);
 			textArea.setAlignmentY(2.0f);
 			textArea.setAlignmentX(2.0f);
 		}
@@ -296,5 +302,12 @@ public class AdminProzorGUI extends JFrame {
 			list.setBounds(37, 41, 473, 234);
 		}
 		return list;
+	}
+	public void dodajStatusAdmin(String string){
+		textArea.append(string);	
+	}
+	public void zatvoriProzorAdmin(){
+		
+		
 	}
 }

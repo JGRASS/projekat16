@@ -57,27 +57,15 @@ public class RezervisiGUI extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JList list;
 	private JTextField brojTelefona;
-    
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RezervisiGUI frame = new RezervisiGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JLabel lblBrojTelefona;
+    public AdminProzorGUI prozor;
+	
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public RezervisiGUI() {
+	public RezervisiGUI(AdminProzorGUI prozor) {
 		setTitle("Nova rezervacija");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RezervisiGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -97,6 +85,8 @@ public class RezervisiGUI extends JFrame {
 		contentPane.add(getLabel_2());
 		contentPane.add(getList());
 		contentPane.add(getBrojTelefona());
+		contentPane.add(getLblBrojTelefona());
+		this.prozor = prozor;
 	}
 	private JLabel getLabel_1() {
 		if (lblTeren == null) {
@@ -141,20 +131,61 @@ public class RezervisiGUI extends JFrame {
 					teren.setImeKorisnika(imeIPrezime.getText());
 					teren.setBrojTelefona(brojTelefona.getText());
 					teren.setDatum((GregorianCalendar) dan.getValue());
+					int sat = 0;
+					if(list.isSelectedIndex(0)){
+						 sat=8;
+					}
+					if(list.isSelectedIndex(1)){
+						 sat=9;
+					}	
+					if(list.isSelectedIndex(2)){
+						 sat=10;
+					}		
+					if(list.isSelectedIndex(3)){
+						 sat=11;
+					}		
+					if(list.isSelectedIndex(4)){
+						 sat=12;
+					}		
+					if(list.isSelectedIndex(5)){
+						 sat=13;
+					}		
+					if(list.isSelectedIndex(6)){
+						 sat=14;
+					}	
+					if(list.isSelectedIndex(7)){
+						 sat=15;
+					}	
+					if(list.isSelectedIndex(8)){
+						 sat=16;
+					}		
+					if(list.isSelectedIndex(9)){
+						 sat=17;
+					}		
+					if(list.isSelectedIndex(10)){
+						 sat=18;
+					}
+					if(sat==0){
+						JOptionPane.showMessageDialog(contentPane, "Izaberite vreme");
+						 return;	
+					}
+						
 					if (tip.getSelectedItem().equals("beton")) 
 						teren.setTipTerena("beton");
 					if (tip.getSelectedItem().equals("sljaka")) 
 						teren.setTipTerena("sljaka");
 					if (tip.getSelectedItem().equals("trava")) 
 						teren.setTipTerena("trava");
-					 String a=GUIKOntroler.vratiListuTerena((teren.getTipTerena()));
-					 if(a==null){
-						 JOptionPane.showMessageDialog(contentPane, "Nema slobodnih termina u ovom vremanu");
+					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()));
+					 if(nazivTerena==null){
+						 JOptionPane.showMessageDialog(contentPane, "Nema slobodnih termina");
 						 return;
 					 }
-					 teren.setNazivTerena(a);
-					
-					
+					teren.setNazivTerena(nazivTerena);
+					teren.setSat(sat);
+					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(GregorianCalendar) dan.getValue()+" Termin"
+							+list.getSelectedValue()+" Teren:"+nazivTerena;
+					prozor.dodajStatusAdmin(status);
 					GUIKOntroler.dodajRezervaciju(teren);
 				}
 			});
@@ -165,6 +196,11 @@ public class RezervisiGUI extends JFrame {
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dispose();
+				}
+			});
 			btnOdustani.setBounds(10, 247, 169, 23);
 		}
 		return btnOdustani;
@@ -212,17 +248,28 @@ public class RezervisiGUI extends JFrame {
 			});
 			list.setFont(new Font("SansSerif", Font.BOLD, 12));
 			list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			list.setBounds(223, 32, 80, 204);
+			list.setBounds(223, 32, 80, 202);
 		}
 		return list;
 	}
 	private JTextField getBrojTelefona() {
 		if (brojTelefona == null) {
 			brojTelefona = new JTextField();
+			brojTelefona.setVisible(false);
 			brojTelefona.setToolTipText("Unesite Vas broj telefona");
 			brojTelefona.setBounds(10, 81, 167, 20);
 			brojTelefona.setColumns(10);
 		}
 		return brojTelefona;
+	}
+	private JLabel getLblBrojTelefona() {
+		if (lblBrojTelefona == null) {
+			lblBrojTelefona = new JLabel("Broj telefona:");
+			lblBrojTelefona.setVisible(false);
+			lblBrojTelefona.setForeground(new Color(50, 205, 50));
+			lblBrojTelefona.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblBrojTelefona.setBounds(10, 65, 118, 14);
+		}
+		return lblBrojTelefona;
 	}
 }

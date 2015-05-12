@@ -34,21 +34,7 @@ public class PrijaviSeGUI extends JFrame {
 	private JButton btnNewButton_1;
 	private JPasswordField sifra;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PrijaviSeGUI frame = new PrijaviSeGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -103,8 +89,17 @@ public class PrijaviSeGUI extends JFrame {
 			btnNewButton = new JButton("Prijavi se");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if(kornisickoIme.getText().equals("Bojan") && sifra.getText().equals("Tomic"))
+					char[] sifra1 = sifra.getPassword();
+					char[] sifra2 = new char[5];
+					sifra2[0]='t';
+					sifra2[1]='o';
+					sifra2[2]='m';
+					sifra2[3]='i';
+					sifra2[4]='c';
+					if(kornisickoIme.getText().equals("bojan")   ){
 						GUIKOntroler.prikaziAdminProzorGUI();
+					 dispose();
+					 GUIKOntroler.zatvoriPocetniProzor();}
 					else
 						JOptionPane.showMessageDialog(contentPane, "Pogresno korisnicko ime i lozinka");
 						
@@ -118,6 +113,12 @@ public class PrijaviSeGUI extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Odustani");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dispose();
+					
+				}
+			});
 			btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnNewButton_1.setBounds(197, 116, 102, 52);
 		}

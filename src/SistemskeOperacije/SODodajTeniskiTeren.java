@@ -1,9 +1,9 @@
-package sistemskeoperacije;
+package SistemskeOperacije;
 
 import java.util.LinkedList;
 
 import TeniskiTeren.*;
-import TeniskiClub.*;
+
 
 public class SODodajTeniskiTeren {
 	
@@ -12,7 +12,7 @@ public class SODodajTeniskiTeren {
 			throw new RuntimeException("Lose unete vrednosti");
 		TeniskiTeren teren = new TeniskiTeren();
 		teren.setTipTerena(tipTerena);
-		teren.setDaLiJeZatvoren(dalijezatvoren);
+		
 		teren.setNazivTerena(naziv);
 		
 		if(tereni.contains(teren))

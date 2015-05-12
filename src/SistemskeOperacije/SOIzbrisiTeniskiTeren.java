@@ -1,13 +1,13 @@
-package sistemskeoperacije;
-import java.util.LinkedList;
+package SistemskeOperacije;
+
 
 import TeniskiTeren.*;
-import TeniskiClub.*;
+import java.util.LinkedList;
 public class SOIzbrisiTeniskiTeren {
 	
 	public static void izbrisiTenskiTeren(String naziv, String tipTerena,boolean dalijezatvoren,LinkedList<TeniskiTeren> tereni){
 		TeniskiTeren teren = new TeniskiTeren();
-		teren.setDaLiJeZatvoren(dalijezatvoren);
+		
 		teren.setNazivTerena(naziv);
 		teren.setTipTerena(tipTerena);
 		if(!tereni.contains(teren))
