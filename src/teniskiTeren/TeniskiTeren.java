@@ -104,34 +104,9 @@
 			if (getClass() != obj.getClass())
 				return false;
 			TeniskiTeren other = (TeniskiTeren) obj;
-			if (brojTelefona == null) {
-				if (other.brojTelefona != null)
-					return false;
-			} else if (!brojTelefona.equals(other.brojTelefona))
-				return false;
-			if (datum == null) {
-				if (other.datum != null)
-					return false;
-			} else if (!datum.equals(other.datum))
-				return false;
-			if (imeKorisnika == null) {
-				if (other.imeKorisnika != null)
-					return false;
-			} else if (!imeKorisnika.equals(other.imeKorisnika))
-				return false;
-			if (nazivTerena == null) {
-				if (other.nazivTerena != null)
-					return false;
-			} else if (!nazivTerena.equals(other.nazivTerena))
-				return false;
-			if (sat != other.sat)
-				return false;
-			if (tipTerena == null) {
-				if (other.tipTerena != null)
-					return false;
-			} else if (!tipTerena.equals(other.tipTerena))
-				return false;
-			return true;
+			if(other.getDatum().equals(datum) && other.getSat()==sat && other.getNazivTerena().equals(nazivTerena) && other.getTipTerena().equals(tipTerena))
+				return true;	
+			return false;
 		}
 		
 		

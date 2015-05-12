@@ -176,7 +176,7 @@ public class RezervisiGUI extends JFrame {
 						teren.setTipTerena("sljaka");
 					if (tip.getSelectedItem().equals("trava")) 
 						teren.setTipTerena("trava");
-					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()));
+					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()),sat,(GregorianCalendar) dan.getValue());
 					 if(nazivTerena==null){
 						 JOptionPane.showMessageDialog(contentPane, "Nema slobodnih termina");
 						 return;

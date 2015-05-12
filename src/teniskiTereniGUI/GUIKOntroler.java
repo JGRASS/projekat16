@@ -75,8 +75,8 @@ public class GUIKOntroler {
 		
 		sistem.rezervisi(nazivTerena, tipTerena, datum, sat);
 	}
-	public static String vratiListuTerena(String tip){
-		return sistem.vratiTerene(tip);
+	public static String vratiListuTerena(String tip,int sat,GregorianCalendar datum){
+		return sistem.vratiTeren(tip,sat,datum);
 		
 	}
 }
