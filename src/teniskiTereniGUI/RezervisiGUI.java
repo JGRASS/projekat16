@@ -36,7 +36,7 @@ import java.awt.Font;
 
 import javax.swing.AbstractListModel;
 
-import TeniskiTeren.TeniskiTeren;
+import teniskiTeren.TeniskiTeren;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;

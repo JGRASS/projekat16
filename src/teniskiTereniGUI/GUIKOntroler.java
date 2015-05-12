@@ -2,8 +2,8 @@ package teniskiTereniGUI;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
-import TeniskiTeren.Implementacija;
-import TeniskiTeren.TeniskiTeren;
+import teniskiTeren.Implementacija;
+import teniskiTeren.TeniskiTeren;
 
 
 

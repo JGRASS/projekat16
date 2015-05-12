@@ -41,8 +41,6 @@ import javax.swing.JDesktopPane;
 
 import java.awt.GridLayout;
 
-import TeniskiTeren.TeniskiTeren;
-
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.factories.FormFactory;
@@ -62,6 +60,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+
+import teniskiTeren.TeniskiTeren;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

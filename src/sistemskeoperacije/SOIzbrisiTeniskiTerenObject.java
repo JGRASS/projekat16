@@ -2,7 +2,7 @@ package sistemskeoperacije;
 
 import java.util.LinkedList;
 
-import TeniskiTeren.TeniskiTeren;
+import teniskiTeren.TeniskiTeren;
 
 public class SOIzbrisiTeniskiTerenObject {
 	

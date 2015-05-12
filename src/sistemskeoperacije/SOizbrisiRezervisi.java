@@ -1,4 +1,4 @@
-package SistemskeOperacije;
+package sistemskeoperacije;
 
 public class SOizbrisiRezervisi {
 
