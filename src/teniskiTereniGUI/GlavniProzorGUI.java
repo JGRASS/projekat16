@@ -31,7 +31,7 @@ import java.awt.Color;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 
-import TeniskiTeren.TeniskiTeren;
+import teniskiTeren.TeniskiTeren;
 
 import java.util.Date;
 import java.util.Calendar;
