@@ -42,6 +42,11 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Predstavlja prozor za rezervaciju teniskih terena
+ * @author Sasa
+ *
+ */
 public class RezervisiGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -116,6 +121,12 @@ public class RezervisiGUI extends JFrame {
 		}
 		return lblNewLabel_1;
 	}
+	
+	/**
+	 * Izvlaci atribute iz polja i kreira novi objekat
+	 * Upisuje vrednosti polja u status barove
+	 * @return
+	 */
 	private JButton getBtnRezervisi() {
 		if (btnRezervisi == null) {
 			btnRezervisi = new JButton("Rezervisi");

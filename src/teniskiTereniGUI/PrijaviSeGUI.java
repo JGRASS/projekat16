@@ -24,6 +24,11 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * predstavlja prozor za indetifikaciju administratora
+ * @author Sasa
+ *
+ */
 public class PrijaviSeGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -84,6 +89,11 @@ public class PrijaviSeGUI extends JFrame {
 		}
 		return kornisickoIme;
 	}
+	
+	/**
+	 * vrsi se provera unesenih Stringova i otvara se administrator prozor
+	 * @return
+	 */
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Prijavi se");

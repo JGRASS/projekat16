@@ -69,6 +69,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Predstavlja GUI Administratora kojem se pristupa preko usera i passworda
+ * @author Sasa
+ *
+ */
 public class AdminProzorGUI extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFile;
@@ -205,6 +210,7 @@ public class AdminProzorGUI extends JFrame {
 		}
 		return panel_2;
 	}
+	
 	private JButton getBtnDodajTeren() {
 		if (btnDodajTeren == null) {
 			btnDodajTeren = new JButton("Dodaj teren");
@@ -314,6 +320,10 @@ public class AdminProzorGUI extends JFrame {
 		return list;
 	}
 
+	/**
+	 * Metoda koja puni status bar
+	 * @param status
+	 */
 	public void dodajStatusAdmin(String status) {
 		textArea.append(status);
 		
