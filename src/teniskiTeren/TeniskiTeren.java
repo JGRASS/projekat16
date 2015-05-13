@@ -3,6 +3,7 @@
 
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 
@@ -52,6 +53,7 @@ import java.util.LinkedList;
 		/**
 		 * Postavlja koji je tip Teniskog terena
 		 * @param tipTerena
+		 * @throws java.lang.RuntimeException ako je uneti String prazan
 		 */
 		public void setTipTerena(String tipTerena) {
 			if(tipTerena.isEmpty() || tipTerena==" ")
@@ -70,8 +72,11 @@ import java.util.LinkedList;
 		/**
 		 * Postavlja datum rezervacije
 		 * @param date 
+		 * @throws java.lang.RuntimeException ako je datum pre sadasnjeg.
 		 */
 		public void setDatum(Date date) {
+			if (date.before(new Date()))
+				throw new RuntimeException("Ne mozete uneti datum pre sadasnjeg.");
 			this.datum = date;
 		}
 		
@@ -86,8 +91,11 @@ import java.util.LinkedList;
 		/**
 		 * Postavlja sat rezervacije
 		 * @param sat
+		 *@throws java.lang.RuntimeException ako je vrednost manja od 8 a veca od 18
 		 */
 		public void setSat(int sat) {
+			if (sat < 8 || sat > 18)
+				throw new RuntimeException("Morate uneti vreme izmedju 8 i 18 h");
 			this.sat = sat;
 		}
 		
@@ -102,8 +110,11 @@ import java.util.LinkedList;
 		/**
 		 * Postavlja ime korisnika
 		 * @param imeKorisnika
+		 * @throws java.lang.RuntimeException  ako je imeKorisnika prazan string
 		 */
 		public void setImeKorisnika(String imeKorisnika) {
+			if (imeKorisnika.equals(" ") || imeKorisnika.isEmpty())
+				throw new RuntimeException("Morate uneti ime korisnika.");
 			this.imeKorisnika = imeKorisnika;
 		}
 		
@@ -118,8 +129,11 @@ import java.util.LinkedList;
 		/**
 		 * Postavlja broj telefona korisnika
 		 * @param brojTelefona
+		 * @throws java.lang.RuntimeException ako broj nije unesen
 		 */
 		public void setBrojTelefona(String brojTelefona) {
+			if (brojTelefona.length() < 1)
+				throw new RuntimeException("Morate uneti broj");
 			this.brojTelefona = brojTelefona;
 		}
 		@Override
@@ -171,9 +185,9 @@ import java.util.LinkedList;
 		}
 		@Override
 		public String toString() {
-			return "TeniskiTeren [tipTerena=" + tipTerena + ", datum=" + datum
-					+ ", sat=" + sat + ", imeKorisnika=" + imeKorisnika
-					+ ", brojTelefona=" + brojTelefona + "]";
+			return "Teren: " + tipTerena + " Datum: " + datum
+					+ " Sat: " + sat + " Ime korisnika: " + imeKorisnika
+					+ " Broj telefona: " + brojTelefona;
 		}
 
 		 

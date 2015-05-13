@@ -174,12 +174,10 @@ public class RezervisiGUI extends JFrame {
 						JOptionPane.showMessageDialog(contentPane, "Izaberite vreme");
 						 return;	
 					}
-					//trebalo bi da sad ovo radi 
+
 					teren.setTipTerena((String) tip.getSelectedItem());
-						
-					 
-	
 					teren.setSat(sat);
+					
 					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(Date) dan.getValue()+" Termin"
 							+list.getSelectedValue()+" Teren:"+tip.getSelectedItem();
 					
