@@ -78,7 +78,7 @@ public class UbaciTerenGUI extends JFrame {
 			lblTipTerena = new JLabel("Tip terena :");
 			lblTipTerena.setForeground(new Color(50, 205, 50));
 			lblTipTerena.setFont(new Font("Tahoma", Font.BOLD, 13));
-			lblTipTerena.setBounds(34, 64, 97, 14);
+			lblTipTerena.setBounds(24, 64, 97, 14);
 		}
 		return lblTipTerena;
 	}
@@ -105,6 +105,7 @@ public class UbaciTerenGUI extends JFrame {
 			btnDodajTeren.setBounds(75, 103, 135, 46);
 			String naziv = textField.getText();
 			String tip = (String) comboBox.getSelectedItem();
+			
 			
 		}
 		return btnDodajTeren;

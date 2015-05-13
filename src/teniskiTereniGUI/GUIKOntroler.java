@@ -91,6 +91,9 @@ public class GUIKOntroler {
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
+		
+			
+			
 	}
 	public static void ugasiAplikacijuAdminProzor() {
 		int opcija = JOptionPane.showConfirmDialog(adminProzor.getContentPane(),
