@@ -123,8 +123,10 @@ public class GUIKOntroler {
 		String tipTerena = teren.getTipTerena();
 		Date datum = teren.getDatum();
 		int sat = teren.getSat();
+		String ime = teren.getBrojTelefona();
+		String broj = teren.getBrojTelefona();
 		
-		sistem.izbrisiRezervaciju(tipTerena, datum, sat);
+		sistem.izbrisiRezervaciju(tipTerena, datum, sat, ime, broj);
 	
 	}
 	
@@ -136,8 +138,10 @@ public class GUIKOntroler {
 		String tipTerena = teren.getTipTerena();
 		Date datum = teren.getDatum();
 		int sat = teren.getSat();
+		String ime = teren.getImeKorisnika();
+		String broj = teren.getBrojTelefona();
 		
-		sistem.rezervisi(tipTerena, datum, sat);
+		sistem.rezervisi(tipTerena, datum, sat, ime, broj);
 		glavniProzor.prikaziSveRezervacije(sistem.vratiRezervacije());
 		
 	}
