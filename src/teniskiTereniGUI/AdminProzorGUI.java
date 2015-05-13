@@ -228,6 +228,11 @@ public class AdminProzorGUI extends JFrame {
 	private JButton getBtnIzbrisiTeren() {
 		if (btnIzbrisiTeren == null) {
 			btnIzbrisiTeren = new JButton("Izbrisi teren");
+			btnIzbrisiTeren.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKOntroler.prikaziObrisiTerenProzor();
+				}
+			});
 			btnIzbrisiTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnIzbrisiTeren.setBackground(new Color(128, 128, 128));
 			btnIzbrisiTeren.setPreferredSize(new Dimension(150, 30));

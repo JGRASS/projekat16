@@ -17,7 +17,11 @@ import teniskiTeren.TeniskiTeren;
  */
 public class GUIKOntroler {
 	
-
+	/**
+	 *instanca ObrisiTeren klase 
+	 */
+	private static ObrisiTerenGUI obrisiTeren;
+	
 	/**
 	 * instanca Implementacija klase
 	 */
@@ -108,6 +112,11 @@ public class GUIKOntroler {
 		
 	}
 	
+	public static void prikaziObrisiTerenProzor() {
+		ObrisiTerenGUI prozor = new ObrisiTerenGUI();
+		prozor.setVisible(true);
+	}
+	
 	/**
 	 * zatvara pocetni prozor
 	 */
@@ -146,9 +155,6 @@ public class GUIKOntroler {
 
 		if (opcija == JOptionPane.YES_OPTION)
 			System.exit(0);
-		
-			
-			
 	}
 	
 	/**
@@ -185,9 +191,13 @@ public class GUIKOntroler {
 	 * ubacuje novi teren u combobox RezervisiGUI prozora
 	 * @param teren
 	 */
+	
+	//PITAMO SUTRA BOJANA KAKO DA IZVEDEMO OVO
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	@SuppressWarnings("unchecked")
 	public static void dodajTeren(String teren) {
 		rezervisiProzor.getTip().addItem(teren);
+		obrisiTeren.getComboBox().addItem(teren);
 		
 	}
 	
