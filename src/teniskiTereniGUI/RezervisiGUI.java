@@ -188,6 +188,7 @@ public class RezervisiGUI extends JFrame {
 					GUIKOntroler.dodajRezervaciju(teren);
 					
 					adminProzor.dodajStatusAdmin(status);
+					glavniProzor.dodajStatusGlavni(status);
 					
 					dispose();
 				}
@@ -212,7 +213,7 @@ public class RezervisiGUI extends JFrame {
 		if (dan == null) {
 			dan = new JSpinner();
 			dan.setFont(new Font("Tahoma", Font.PLAIN, 13));
-			dan.setModel(new SpinnerDateModel(new Date(1431208800000L), null, null, Calendar.DAY_OF_MONTH));
+			dan.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_MONTH));
 			dan.setBounds(66, 171, 113, 20);
 			JSpinner.DateEditor de_dan = new JSpinner.DateEditor(dan, "dd-MMM-yyyy");
 			dan.setEditor(de_dan);

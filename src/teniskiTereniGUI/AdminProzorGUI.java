@@ -325,7 +325,7 @@ public class AdminProzorGUI extends JFrame {
 	 * @param status
 	 */
 	public void dodajStatusAdmin(String status) {
-		textArea.append(status);
+		getTextArea().append(status);
 		
 	}
 	

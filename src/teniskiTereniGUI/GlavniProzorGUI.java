@@ -297,7 +297,7 @@ public class GlavniProzorGUI extends JFrame {
 	 * @param status
 	 */
 	public void dodajStatusGlavni(String status) {
-		textArea.append(status);
+		getTextArea().append(status);
 		
 	}
 	public void prikaziSveRezervacije(LinkedList rezervacije){
