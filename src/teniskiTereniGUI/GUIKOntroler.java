@@ -18,6 +18,7 @@ public class GUIKOntroler {
 	private static PocetniProzorGUI pocetniProzor;
 	private static AdminProzorGUI adminProzor;
 	private static GlavniProzorGUI glavniProzor;
+	private static RezervisiGUI rezervisiProzor;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -63,27 +64,22 @@ public class GUIKOntroler {
 		pocetniProzor.dispose();
 	}
 	public static void obrisiRezervaciju(TeniskiTeren teren){
-		String nazivTerena = teren.getNazivTerena();
 		String tipTerena = teren.getTipTerena();
 		Date datum = teren.getDatum();
 		int sat = teren.getSat();
 		
-		sistem.izbrisiRezervaciju(nazivTerena, tipTerena, datum, sat);
+		sistem.izbrisiRezervaciju(tipTerena, datum, sat);
 	
 	}
 	
 	public static void dodajRezervaciju(TeniskiTeren teren) {
-		String nazivTerena = teren.getNazivTerena();
 		String tipTerena = teren.getTipTerena();
 		Date datum = teren.getDatum();
 		int sat = teren.getSat();
 		
-		sistem.rezervisi(nazivTerena, tipTerena, datum, sat);
+		sistem.rezervisi(tipTerena, datum, sat);
 	}
-	public static String vratiListuTerena(String tip,int sat,Date datum){
-		return sistem.vratiTeren(tip,sat,datum);
-		
-	}
+	
 	public static void ugasiAplikacijuGlavniProzor() {
 		int opcija = JOptionPane.showConfirmDialog(glavniProzor.getContentPane(),
 				"Da li zelite da izadjete iz aplikacije", "Izlazak",
@@ -109,5 +105,11 @@ public class GUIKOntroler {
 		JOptionPane.showMessageDialog(glavniProzor.getContentPane(),
 				"Autori: Saša Lukic, Nikola Trajkovic, Aleksa Topalovic, Verzija 1.0", "O programu Rezervacija terena",
 				JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void dodajTeren(String teren) {
+		rezervisiProzor.getTip().addItem(teren);
+		
 	}
 }

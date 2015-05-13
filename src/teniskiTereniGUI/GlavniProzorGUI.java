@@ -37,9 +37,11 @@ import java.util.Date;
 import java.util.Calendar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -290,5 +292,10 @@ public class GlavniProzorGUI extends JFrame {
 			});
 		}
 		return mntmOProgramu;
+	}
+
+	public void dodajStatusGlavni(String status) {
+		textArea.append(status);
+		
 	}
 }

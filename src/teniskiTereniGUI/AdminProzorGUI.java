@@ -313,8 +313,11 @@ public class AdminProzorGUI extends JFrame {
 		}
 		return list;
 	}
-	public void dodajStatusAdmin(String string){
-		textArea.append(string);	
+
+	public void dodajStatusAdmin(String status) {
+		textArea.append(status);
+		
 	}
+	
 	
 }
