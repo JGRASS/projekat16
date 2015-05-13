@@ -45,6 +45,11 @@ import javax.swing.UIManager;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Predstavlja glavni korisnicki prozor
+ * @author Sasa
+ *
+ */
 public class GlavniProzorGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -294,6 +299,10 @@ public class GlavniProzorGUI extends JFrame {
 		return mntmOProgramu;
 	}
 
+	/**
+	 * puni status bar glavnog prozora
+	 * @param status
+	 */
 	public void dodajStatusGlavni(String status) {
 		textArea.append(status);
 		

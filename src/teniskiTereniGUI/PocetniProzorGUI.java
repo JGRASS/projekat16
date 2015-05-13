@@ -14,6 +14,11 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * predstavlja pocetni prozor iz koga se bira nacin rada, administrator odnosno zaposleni
+ * @author Sasa
+ *
+ */
 public class PocetniProzorGUI extends JFrame {
 
 	private JPanel contentPane;

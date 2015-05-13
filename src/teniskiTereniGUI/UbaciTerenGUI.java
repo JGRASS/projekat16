@@ -21,6 +21,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+ * Predstavlja prozor koji sluzi za ubacivanje novog terena
+ * @author Sasa
+ *
+ */
 public class UbaciTerenGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -83,6 +88,10 @@ public class UbaciTerenGUI extends JFrame {
 		}
 		return btnOdustani;
 	}
+	/**
+	 * preuzima vrednost polja i prosledjuje ga metodi dodajTeren
+	 * @return
+	 */
 	private JButton getBtnDodajTeren() {
 		if (btnDodajTeren == null) {
 			btnDodajTeren = new JButton("Dodaj teren");
