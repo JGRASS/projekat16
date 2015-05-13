@@ -108,7 +108,7 @@ public class AdminProzorGUI extends JFrame {
 		setTitle("Administrator");
 		setMinimumSize(new Dimension(705, 435));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AdminProzorGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 669, 435);
 		setJMenuBar(getMenuBar_1());
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -313,8 +313,11 @@ public class AdminProzorGUI extends JFrame {
 		}
 		return list;
 	}
-	public void dodajStatusAdmin(String string){
-		textArea.append(string);	
+
+	public void dodajStatusAdmin(String status) {
+		textArea.append(status);
+		
 	}
+	
 	
 }

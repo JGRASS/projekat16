@@ -46,7 +46,6 @@ public class RezervisiGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblTeren;
-	private JComboBox tip;
 	private JTextField imeIPrezime;
 	private JLabel lblNewLabel_1;
 	private JButton btnRezervisi;
@@ -58,14 +57,16 @@ public class RezervisiGUI extends JFrame {
 	private JList list;
 	private JTextField brojTelefona;
 	private JLabel lblBrojTelefona;
-    public AdminProzorGUI prozor;
+    public AdminProzorGUI adminProzor;
+    public GlavniProzorGUI glavniProzor;
+    private JComboBox tip;
 	
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public RezervisiGUI(AdminProzorGUI prozor) {
+	public RezervisiGUI(AdminProzorGUI prozor, GlavniProzorGUI prozorG) {
 		setTitle("Nova rezervacija");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RezervisiGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -75,7 +76,6 @@ public class RezervisiGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLabel_1());
-		contentPane.add(getTip());
 		contentPane.add(getImeIPrezime());
 		contentPane.add(getLblNewLabel_1());
 		contentPane.add(getBtnRezervisi());
@@ -86,7 +86,9 @@ public class RezervisiGUI extends JFrame {
 		contentPane.add(getList());
 		contentPane.add(getBrojTelefona());
 		contentPane.add(getLblBrojTelefona());
-		this.prozor = prozor;
+		contentPane.add(getTip());
+		this.adminProzor = prozor;
+		this.glavniProzor = prozorG;
 	}
 	private JLabel getLabel_1() {
 		if (lblTeren == null) {
@@ -96,14 +98,6 @@ public class RezervisiGUI extends JFrame {
 			lblTeren.setBounds(10, 126, 46, 14);
 		}
 		return lblTeren;
-	}
-	private JComboBox getTip() {
-		if (tip == null) {
-			tip = new JComboBox();
-			tip.setModel(new DefaultComboBoxModel(new String[] {"beton", "sljaka", "trava"}));
-			tip.setBounds(64, 125, 113, 20);
-		}
-		return tip;
 	}
 	private JTextField getImeIPrezime() {
 		if (imeIPrezime == null) {
@@ -171,17 +165,22 @@ public class RezervisiGUI extends JFrame {
 					}
 					//trebalo bi da sad ovo radi 
 					teren.setTipTerena((String) tip.getSelectedItem());
-					 String nazivTerena=GUIKOntroler.vratiListuTerena((teren.getTipTerena()),sat,(Date) dan.getValue());
-					 if(nazivTerena==null){
-						 JOptionPane.showMessageDialog(contentPane, "Nema slobodnih termina");
-						 return;
-					 }
-					teren.setNazivTerena(nazivTerena);
+						
+					 
+	
 					teren.setSat(sat);
-					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(GregorianCalendar) dan.getValue()+" Termin"
-							+list.getSelectedValue()+" Teren:"+nazivTerena;
-					prozor.dodajStatusAdmin(status);
+					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(Date) dan.getValue()+" Termin"
+							+list.getSelectedValue()+" Teren:"+tip.getSelectedItem();
+					
+					
+					
+					
+					
 					GUIKOntroler.dodajRezervaciju(teren);
+					
+					adminProzor.dodajStatusAdmin(status);
+					
+					dispose();
 				}
 			});
 			btnRezervisi.setBounds(10, 213, 169, 23);
@@ -266,5 +265,15 @@ public class RezervisiGUI extends JFrame {
 			lblBrojTelefona.setBounds(10, 65, 118, 14);
 		}
 		return lblBrojTelefona;
+	}
+	public JComboBox getTip() {
+		if (tip == null) {
+			tip = new JComboBox();
+			tip.setBounds(66, 125, 111, 20);
+			tip.addItem("beton");
+			tip.addItem("sljaka");
+			tip.addItem("trava");
+		}
+		return tip;
 	}
 }
