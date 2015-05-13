@@ -132,10 +132,6 @@ public class RezervisiGUI extends JFrame {
 			btnRezervisi = new JButton("Rezervisi");
 			btnRezervisi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					TeniskiTeren teren = new TeniskiTeren();
-					teren.setImeKorisnika(imeIPrezime.getText());
-					teren.setBrojTelefona(brojTelefona.getText());
-					teren.setDatum((Date) dan.getValue());
 					int sat = 0;
 					if(list.isSelectedIndex(0)){
 						 sat=8;
@@ -175,18 +171,14 @@ public class RezervisiGUI extends JFrame {
 						 return;	
 					}
 
-					teren.setTipTerena((String) tip.getSelectedItem());
-					teren.setSat(sat);
+					String tipTerena = tip.getSelectedItem().toString();
+					Date datum = (Date) dan.getValue();
+					String imeKorisnika = imeIPrezime.getText();
+					String broj = brojTelefona.getText();
 					
-					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(Date) dan.getValue()+" Termin"
-							+list.getSelectedValue()+" Teren:"+tip.getSelectedItem();
+					GUIKOntroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);
 					
-					
-					
-					
-					
-					GUIKOntroler.dodajRezervaciju(teren);
-					
+					String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
 					adminProzor.dodajStatusAdmin(status);
 					glavniProzor.dodajStatusGlavni(status);
 					

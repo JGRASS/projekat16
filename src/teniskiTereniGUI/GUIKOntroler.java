@@ -120,13 +120,8 @@ public class GUIKOntroler {
 	 * @param teren
 	 */
 	public static void obrisiRezervaciju(TeniskiTeren teren){
-		String tipTerena = teren.getTipTerena();
-		Date datum = teren.getDatum();
-		int sat = teren.getSat();
-		String ime = teren.getBrojTelefona();
-		String broj = teren.getBrojTelefona();
 		
-		sistem.izbrisiRezervaciju(tipTerena, datum, sat, ime, broj);
+		sistem.izbrisiRezervaciju(teren);
 	
 	}
 	
@@ -134,14 +129,9 @@ public class GUIKOntroler {
 	 * poziva metodu koja dodaje rezervaciju
 	 * @param teren
 	 */
-	public static void dodajRezervaciju(TeniskiTeren teren) {
-		String tipTerena = teren.getTipTerena();
-		Date datum = teren.getDatum();
-		int sat = teren.getSat();
-		String ime = teren.getImeKorisnika();
-		String broj = teren.getBrojTelefona();
+	public static void dodajRezervaciju(String tipTerena, Date datum,int sat , String imeKorisnika, String brojTelefona) {
 		
-		sistem.rezervisi(tipTerena, datum, sat, ime, broj);
+		sistem.rezervisi(tipTerena, datum, sat, imeKorisnika, brojTelefona);
 		glavniProzor.prikaziSveRezervacije(sistem.vratiRezervacije());
 		
 	}

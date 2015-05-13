@@ -42,13 +42,8 @@ public class Implementacija {
 	 * @param sat
 	 * @throws java.lang.RuntimeException ako takav obejkat ne postoji u listi.
 	 */
-	public void izbrisiRezervaciju (String tipTerena, java.util.Date datum , int sat, String imeKorisnika, String brojTelefona) {
-		TeniskiTeren t = new TeniskiTeren();
-		t.setTipTerena(tipTerena);
-		t.setDatum(datum);
-		t.setSat(sat);
-		t.setImeKorisnika(imeKorisnika);
-		t.setBrojTelefona(brojTelefona);
+	public void izbrisiRezervaciju (TeniskiTeren t) {
+		
 		
 		for (int i = 0; i < rezervacije.size(); i++) {
 			if (t.getTipTerena().equals(rezervacije.get(i).getTipTerena()) && t.getDatum().equals(rezervacije.get(i).getDatum()) && t.getSat() == rezervacije.get(i).getSat())
