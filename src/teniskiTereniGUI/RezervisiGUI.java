@@ -66,7 +66,7 @@ public class RezervisiGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RezervisiGUI(AdminProzorGUI prozor) {
+	public RezervisiGUI(AdminProzorGUI prozor, GlavniProzorGUI prozorG) {
 		setTitle("Nova rezervacija");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RezervisiGUI.class.getResource("/icons/1431287210_Tennis_Ball-32.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -87,8 +87,8 @@ public class RezervisiGUI extends JFrame {
 		contentPane.add(getBrojTelefona());
 		contentPane.add(getLblBrojTelefona());
 		contentPane.add(getTip());
-		this.adminProzor = adminProzor;
-		this.glavniProzor = glavniProzor;
+		this.adminProzor = prozor;
+		this.glavniProzor = prozorG;
 	}
 	private JLabel getLabel_1() {
 		if (lblTeren == null) {
@@ -172,12 +172,14 @@ public class RezervisiGUI extends JFrame {
 					String status = "Ime i prezime:"+imeIPrezime.getText()+" Broj telefona:"+brojTelefona.getText()+" Datum:"+(Date) dan.getValue()+" Termin"
 							+list.getSelectedValue()+" Teren:"+tip.getSelectedItem();
 					
-					//OVDE BACA NULL POINTER EXCEPTION. NEK NEKO PROVERI ZASTO
-					adminProzor.dodajStatusAdmin(status);
-					glavniProzor.dodajStatusGlavni(status);
+					
+					
 					
 					
 					GUIKOntroler.dodajRezervaciju(teren);
+					
+					adminProzor.dodajStatusAdmin(status);
+					
 					dispose();
 				}
 			});

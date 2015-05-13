@@ -35,6 +35,7 @@ import teniskiTeren.TeniskiTeren;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -56,7 +57,6 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JList list;
 	private JList list_3;
 	private JButton btnDodajRezervaciju;
 	private JButton btnObrisiRezervaciju;
@@ -83,7 +83,7 @@ public class GlavniProzorGUI extends JFrame {
 			}
 		});
 		setTitle("Zaposleni");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 685, 467);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
@@ -170,18 +170,10 @@ public class GlavniProzorGUI extends JFrame {
 			panel_2.setBackground(new Color(128, 128, 128));
 			panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			panel_2.setLayout(null);
-			panel_2.add(getList());
 			panel_2.add(getList_3());
 			panel_2.add(getLblRezervacije());
 		}
 		return panel_2;
-	}
-	private JList getList() {
-		if (list == null) {
-			list = new JList();
-			list.setBounds(10, 21, 1, 1);
-		}
-		return list;
 	}
 	private JList getList_3() {
 		if (list_3 == null) {
@@ -201,6 +193,7 @@ public class GlavniProzorGUI extends JFrame {
 			btnDodajRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKOntroler.prikaziRezervisiGUI();
+					
 				}
 			});
 			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
@@ -216,8 +209,8 @@ public class GlavniProzorGUI extends JFrame {
 			btnObrisiRezervaciju.setPreferredSize(new Dimension(140, 45));
 			btnObrisiRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if(list.getSelectedValue() != null) {
-						TeniskiTeren teren = (TeniskiTeren) list.getSelectedValue();
+					if(list_3.getSelectedValue() != null) {
+						TeniskiTeren teren = (TeniskiTeren) list_3.getSelectedValue();
 						GUIKOntroler.obrisiRezervaciju(teren);
 					}
 				}
@@ -297,5 +290,9 @@ public class GlavniProzorGUI extends JFrame {
 	public void dodajStatusGlavni(String status) {
 		textArea.append(status);
 		
+	}
+	public void prikaziSveRezervacije(LinkedList rezervacije){
+		
+		list_3.setListData(rezervacije.toArray());
 	}
 }

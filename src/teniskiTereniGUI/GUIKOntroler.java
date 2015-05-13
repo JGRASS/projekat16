@@ -52,7 +52,7 @@ public class GUIKOntroler {
 		prozor.setVisible(true);
 	}
 	public static void prikaziRezervisiGUI(){
-		RezervisiGUI prozor = new RezervisiGUI( adminProzor);
+		RezervisiGUI prozor = new RezervisiGUI( adminProzor,glavniProzor);
 		prozor.setVisible(true);
 	}
 	public static void prikaziDodajTerenProzor(){
@@ -78,6 +78,8 @@ public class GUIKOntroler {
 		int sat = teren.getSat();
 		
 		sistem.rezervisi(tipTerena, datum, sat);
+		glavniProzor.prikaziSveRezervacije(sistem.vratiRezervacije());
+		
 	}
 	
 	public static void ugasiAplikacijuGlavniProzor() {
@@ -112,4 +114,9 @@ public class GUIKOntroler {
 		rezervisiProzor.getTip().addItem(teren);
 		
 	}
+	
+	public static LinkedList<TeniskiTeren> vratiRezervacije(){
+		return sistem.vratiRezervacije();
+	}
+	
 }

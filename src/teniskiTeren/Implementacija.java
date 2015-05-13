@@ -42,5 +42,8 @@ public class Implementacija {
 		}
 	
 	}
+	public LinkedList<TeniskiTeren> vratiRezervacije(){
+		return rezervacije;
+	}
 	
 }
