@@ -15,11 +15,29 @@ import java.util.LinkedList;
 	 */
 	public class TeniskiTeren {
 		
-		private String tipTerena; //predstavlja koja je podloga (sljaka,beton itd)
+		/**
+		 * Predstavlja sam teren
+		 */
+		private String tipTerena;
 
+		/**
+		 * Predstavlja datum rezervacije
+		 */
 		private Date datum;
+		
+		/**
+		 * Predstavlja sat rezervacije
+		 */
 		private int sat;
+		
+		/**
+		 * Ime korisnika koji je izvrsio rezervaciju
+		 */
 		private String imeKorisnika;
+		
+		/**
+		 * Broj telefona korisnika
+		 */
 		private String brojTelefona;
 		
 
@@ -40,27 +58,67 @@ import java.util.LinkedList;
 				throw new RuntimeException("Pogresno unet tip");
 			this.tipTerena = tipTerena;
 		}
+		
+		/**
+		 * Vraca datum rezervacije
+		 * @return datum 
+		 */
 		public Date getDatum() {
 			return datum;
 		}
+		
+		/**
+		 * Postavlja datum rezervacije
+		 * @param date 
+		 */
 		public void setDatum(Date date) {
 			this.datum = date;
 		}
+		
+		/**
+		 * Vraca sat rezervacije
+		 * @return sat
+		 */
 		public int getSat() {
 			return sat;
 		}
+		
+		/**
+		 * Postavlja sat rezervacije
+		 * @param sat
+		 */
 		public void setSat(int sat) {
 			this.sat = sat;
 		}
+		
+		/**
+		 * Vraca ime korisnika	
+		 * @return imeKorisnika
+		 */
 		public String getImeKorisnika() {
 			return imeKorisnika;
 		}
+		
+		/**
+		 * Postavlja ime korisnika
+		 * @param imeKorisnika
+		 */
 		public void setImeKorisnika(String imeKorisnika) {
 			this.imeKorisnika = imeKorisnika;
 		}
+		
+		/**
+		 * Vraca broj telefona korisnika
+		 * @return brojTelefona
+		 */
 		public String getBrojTelefona() {
 			return brojTelefona;
 		}
+		
+		/**
+		 * Postavlja broj telefona korisnika
+		 * @param brojTelefona
+		 */
 		public void setBrojTelefona(String brojTelefona) {
 			this.brojTelefona = brojTelefona;
 		}
