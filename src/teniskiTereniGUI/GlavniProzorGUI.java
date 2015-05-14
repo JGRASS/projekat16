@@ -66,7 +66,7 @@ public class GlavniProzorGUI extends JFrame {
 	private JButton btnDodajRezervaciju;
 	private JButton btnObrisiRezervaciju;
 	private JScrollPane scrollPane;
-	public JTextArea textArea;
+	private JTextArea textArea;
 	private JMenuItem mntmSave;
 	private JMenuItem mntmOpen;
 	private JMenuItem mntmExit;
@@ -302,13 +302,13 @@ public class GlavniProzorGUI extends JFrame {
 	 * puni status bar glavnog prozora
 	 * @param status
 	 */
-	public void dodaj(String status) {
-		textArea.append(status);
+	public void dodajUStatus(String status) {
+		textArea.setText(""+getTextArea()+'\n'+status);
 		
 	}
-	public void prikaziSveRezervacije(LinkedList rezervacije){
-		
+
+	protected void prikaziSveRezervacije(LinkedList<TeniskiTeren> rezervacije ) {
 		list_3.setListData(rezervacije.toArray());
+
 	}
-	
 }

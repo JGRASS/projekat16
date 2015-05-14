@@ -54,6 +54,7 @@ import javax.swing.SpinnerDateModel;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.util.LinkedList;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -335,9 +336,14 @@ public class AdminProzorGUI extends JFrame {
 	 * Metoda koja puni status bar
 	 * @param status
 	 */
-	public void dodaj(String status) {
-		textArea.append(status);
+	public void dodajUStatus(String status) {
+		textArea.setText(""+getTextArea()+'\n'+status);
 		
+	}
+	
+	protected void prikaziSveRezervacije(LinkedList<TeniskiTeren> rezervacije ) {
+		list.setListData(rezervacije.toArray());
+
 	}
 	
 	

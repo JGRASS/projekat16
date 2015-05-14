@@ -188,8 +188,10 @@ public class RezervisiGUI extends JFrame {
 					if (broj == null)
 						JOptionPane.showMessageDialog(contentPane, "Unesite broj telefona");
 					
-				
+					
 					GUIKontroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);		
+					
+					
 					dispose();
 					
 				}
