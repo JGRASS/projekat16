@@ -1,8 +1,14 @@
 package teniskiTeren;
 
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import sistemskeoperacije.SODodajTeren;
+import sistemskeoperacije.SOIzbrisiRezervaciju;
+import sistemskeoperacije.SOIzbrisiTeren;
+import sistemskeoperacije.SORezervisi;
 
 public class RezervacioniSistem {
 
@@ -38,12 +44,8 @@ public class RezervacioniSistem {
 	 * @throws java.lang.RuntimeException ako rezervacija vec postoji u listi rezervacije
 	 */
 	public void rezervisi (TeniskiTeren t) {
-		for (int i = 0; i < rezervacije.size(); i++) {
-			if (t.getTipTerena().equals(rezervacije.get(i).getTipTerena()) && t.getDatum().equals(rezervacije.get(i).getDatum()) && t.getSat() == rezervacije.get(i).getSat())
-				throw new RuntimeException("Rezervacija vec postoji");
-			}
-	
-		rezervacije.add(t);		
+		
+		SORezervisi.rezervisi(t, rezervacije);	
 	}
 	
 	/**
@@ -55,13 +57,7 @@ public class RezervacioniSistem {
 	 */
 	public void izbrisiRezervaciju (TeniskiTeren t) {
 		
-		
-		for (int i = 0; i < rezervacije.size(); i++) {
-			if (t.getTipTerena().equals(rezervacije.get(i).getTipTerena()) && t.getDatum().equals(rezervacije.get(i).getDatum()) && t.getSat() == rezervacije.get(i).getSat())
-				throw new RuntimeException("Rezervacija ne postoji");
-		}
-		
-		rezervacije.remove(t);
+		SOIzbrisiRezervaciju.izbrisiRezervaciju(t, rezervacije);
 	
 	}
 
@@ -70,17 +66,15 @@ public class RezervacioniSistem {
 	 * @param teniskiTeren
 	 */
 	public void dodajTeren(String teniskiTeren) {
-		
-		if (tipoviTerena.contains(teniskiTeren))
-				throw new RuntimeException("Teren vec postoji.");
-		
-		tipoviTerena.add(teniskiTeren);
+		SODodajTeren.dodajTeren(teniskiTeren, tipoviTerena);
 	}
 	
+	/**
+	 * Metoda brise teren
+	 * @param teniskiTeren
+	 */
 	public void izbrisiTeren(String teniskiTeren) {
-		if (!tipoviTerena.contains(teniskiTeren))
-			throw new RuntimeException("Teren ne postoji. ");
-		tipoviTerena.remove(teniskiTeren);
+		SOIzbrisiTeren.izbrisiTeren(teniskiTeren, tipoviTerena);
 	}
 	
 }

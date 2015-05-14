@@ -137,7 +137,14 @@ public class GUIKontroler {
 	 * poziva metodu koja dodaje rezervaciju
 	 * @param teren
 	 */
-	public static void dodajRezervaciju(TeniskiTeren teren) {
+	public static void dodajRezervaciju(String tipTerena, Date datum, int sat, String imeKorisnika, String brojTelefona) {
+		TeniskiTeren teren = new TeniskiTeren();
+		teren.setTipTerena(tipTerena);
+		teren.setDatum(datum);
+		teren.setSat(sat);
+		teren.setImeKorisnika(imeKorisnika);
+		teren.setBrojTelefona(brojTelefona);
+		
 		sistem.rezervisi(teren);
 	
 		

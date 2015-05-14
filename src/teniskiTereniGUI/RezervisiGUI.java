@@ -132,6 +132,7 @@ public class RezervisiGUI extends JFrame {
 			btnRezervisi = new JButton("Rezervisi");
 			btnRezervisi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					
 					int sat = 0;
 					if(list.isSelectedIndex(0)){
 						 sat=8;
@@ -187,24 +188,10 @@ public class RezervisiGUI extends JFrame {
 					if (broj == null)
 						JOptionPane.showMessageDialog(contentPane, "Unesite broj telefona");
 					
-					TeniskiTeren teren = new TeniskiTeren();
-					teren.setTipTerena(tipTerena);
-					teren.setDatum(datum);
-					teren.setSat(sat);
-					teren.setImeKorisnika(imeKorisnika);
-					teren.setBrojTelefona(broj);
+				
+					GUIKontroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);		
+					dispose();
 					
-					if (GUIKontroler.vratiRezervacije().contains(teren))
-						JOptionPane.showMessageDialog(contentPane, "Rezervacija vec postoji.");
-					else {
-						
-						GUIKontroler.dodajRezervaciju(teren);
-					
-						String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
-						GUIKontroler.ubaciUStatus(status);
-					
-						dispose();
-					}
 				}
 			});
 			btnRezervisi.setBounds(10, 213, 169, 23);
