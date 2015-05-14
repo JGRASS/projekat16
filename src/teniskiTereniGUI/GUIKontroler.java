@@ -137,6 +137,14 @@ public class GUIKontroler {
 		teren.setBrojTelefona(brojTelefona);
 		
 		sistem.izbrisiRezervaciju(teren);
+		
+		String status = "Izbrisana rezervacija. rezervacija.Teren: "+tipTerena+" Datum: "+datum+" Vreme: "+datum+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+brojTelefona;
+		
+		adminProzor.dodajUStatus(status);
+		glavniProzor.dodajUStatus(status);
+	
+		adminProzor.prikaziSveRezervacije(sistem.getRezervacije());
+		glavniProzor.prikaziSveRezervacije(sistem.getRezervacije());
 	
 	}
 	
@@ -154,7 +162,7 @@ public class GUIKontroler {
 		
 		sistem.rezervisi(teren);
 		
-		String status = "Teren: "+tipTerena+" Datum: "+datum+" Vreme: "+datum+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+brojTelefona;
+		String status = "Dodata rezervacija.Teren: "+tipTerena+" Datum: "+datum+" Vreme: "+datum+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+brojTelefona;
 		
 		adminProzor.dodajUStatus(status);
 		glavniProzor.dodajUStatus(status);
