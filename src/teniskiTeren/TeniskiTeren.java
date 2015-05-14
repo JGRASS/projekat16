@@ -75,8 +75,6 @@ import java.util.LinkedList;
 		 * @throws java.lang.RuntimeException ako je datum pre sadasnjeg.
 		 */
 		public void setDatum(Date date) {
-			if (date.before(new Date()))
-				throw new RuntimeException("Ne mozete uneti datum pre sadasnjeg.");
 			this.datum = date;
 		}
 		

@@ -129,7 +129,6 @@ public class GUIKontroler {
 	 * @param teren
 	 */
 	public static void obrisiRezervaciju(TeniskiTeren teren){
-		
 		sistem.izbrisiRezervaciju(teren);
 	
 	}
@@ -138,10 +137,9 @@ public class GUIKontroler {
 	 * poziva metodu koja dodaje rezervaciju
 	 * @param teren
 	 */
-	public static void dodajRezervaciju(String tipTerena, Date datum,int sat , String imeKorisnika, String brojTelefona) {
-		
-		sistem.rezervisi(tipTerena, datum, sat, imeKorisnika, brojTelefona);
-		glavniProzor.prikaziSveRezervacije(sistem.getRezervacije());
+	public static void dodajRezervaciju(TeniskiTeren teren) {
+		sistem.rezervisi(teren);
+	
 		
 	}
 	
@@ -202,5 +200,9 @@ public class GUIKontroler {
 	
 	public static void dodajTeren(String teren) {
 		sistem.dodajTeren(teren);
+	}
+	
+	public static void izbrisiTeren(String teren) {
+		sistem.izbrisiTeren(teren);
 	}
 }

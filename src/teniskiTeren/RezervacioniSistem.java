@@ -9,12 +9,6 @@ public class RezervacioniSistem {
 	private  LinkedList<TeniskiTeren> rezervacije = new LinkedList<>();
 	private  LinkedList<String> tipoviTerena = new LinkedList<String>();
 	
-	public RezervacioniSistem() {
-		tipoviTerena.add("sljaka");
-		tipoviTerena.add("beton");
-		tipoviTerena.add("trava");
-	}
-	
 
 	public LinkedList<TeniskiTeren> getRezervacije() {
 		return rezervacije;
@@ -43,14 +37,7 @@ public class RezervacioniSistem {
 	 * @param sat
 	 * @throws java.lang.RuntimeException ako rezervacija vec postoji u listi rezervacije
 	 */
-	public void rezervisi (String tipTerena, java.util.Date datum , int sat , String imeKorisnika, String brojTelefona) {
-		TeniskiTeren t = new TeniskiTeren();
-		t.setTipTerena(tipTerena);
-		t.setDatum(datum);
-		t.setSat(sat);
-		t.setImeKorisnika(imeKorisnika);
-		t.setBrojTelefona(brojTelefona);
-		
+	public void rezervisi (TeniskiTeren t) {
 		for (int i = 0; i < rezervacije.size(); i++) {
 			if (t.getTipTerena().equals(rezervacije.get(i).getTipTerena()) && t.getDatum().equals(rezervacije.get(i).getDatum()) && t.getSat() == rezervacije.get(i).getSat())
 				throw new RuntimeException("Rezervacija vec postoji");

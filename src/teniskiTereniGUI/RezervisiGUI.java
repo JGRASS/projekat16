@@ -172,11 +172,29 @@ public class RezervisiGUI extends JFrame {
 					}
 
 					String tipTerena = jcbTeniskiTeren.getSelectedItem().toString();
+					if (tipTerena == null || tipTerena.isEmpty())
+						JOptionPane.showMessageDialog(contentPane, "Izaberite teren");
+						
 					Date datum = (Date) dan.getValue();
-					String imeKorisnika = imeIPrezime.getText();
-					String broj = brojTelefona.getText();
+					if (datum == null)
+						JOptionPane.showMessageDialog(contentPane, "Izaberite datum");
 					
-					GUIKontroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);
+					String imeKorisnika = imeIPrezime.getText();
+					if (imeKorisnika == null || imeKorisnika.isEmpty())
+						JOptionPane.showMessageDialog(contentPane, "Unesite vase ime");
+				
+					String broj = brojTelefona.getText();
+					if (broj == null)
+						JOptionPane.showMessageDialog(contentPane, "Unesite broj telefona");
+					
+					TeniskiTeren teren = new TeniskiTeren();
+					teren.setTipTerena(tipTerena);
+					teren.setDatum(datum);
+					teren.setSat(sat);
+					teren.setImeKorisnika(imeKorisnika);
+					teren.setBrojTelefona(broj);
+					
+					GUIKontroler.dodajRezervaciju(teren);
 					
 					String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
 					GUIKontroler.ubaciUStatus(status);

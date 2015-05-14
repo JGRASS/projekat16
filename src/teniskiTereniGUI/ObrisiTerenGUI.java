@@ -60,6 +60,9 @@ public class ObrisiTerenGUI extends JFrame {
 			btnObrisiTeren = new JButton("Obrisi teren");
 			btnObrisiTeren.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					String teren = jcbTeniskiTeren.getSelectedItem().toString();
+					GUIKontroler.izbrisiTeren(teren);
+					dispose();
 				}
 			});
 			btnObrisiTeren.setEnabled(false);
