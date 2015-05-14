@@ -1,9 +1,11 @@
 package teniskiTereniGUI;
 import java.awt.EventQueue;
+import java.io.File;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import teniskiTeren.RezervacioniSistem;
@@ -234,4 +236,71 @@ public class GUIKontroler {
 	public static void izbrisiTeren(String teren) {
 		sistem.izbrisiTeren(teren);
 	}
+	
+	public static void sacuvajUFajlGlavniProzor() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showSaveDialog(glavniProzor.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+
+				sistem.sacuvajUFajl(file.getAbsolutePath());
+			}
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavniProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public static void ucitajIzFajlaGlavniProzor() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(glavniProzor.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				sistem.ucitajIzFajla(file.getAbsolutePath());
+				glavniProzor.prikaziSveRezervacije(sistem.getRezervacije());
+			}	
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavniProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	public static void sacuvajUFajlAdminProzor() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showSaveDialog(adminProzor.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+
+				sistem.sacuvajUFajl(file.getAbsolutePath());
+			}
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(adminProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public static void ucitajIzFajlaAdminProzor() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(adminProzor.getContentPane());
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				sistem.ucitajIzFajla(file.getAbsolutePath());
+				adminProzor.prikaziSveRezervacije(sistem.getRezervacije());
+			}	
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(adminProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
 }

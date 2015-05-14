@@ -9,6 +9,8 @@ import sistemskeoperacije.SODodajTeren;
 import sistemskeoperacije.SOIzbrisiRezervaciju;
 import sistemskeoperacije.SOIzbrisiTeren;
 import sistemskeoperacije.SORezervisi;
+import sistemskeoperacije.SOSacuvajUFajl;
+import sistemskeoperacije.SOUcitajIzFajla;
 
 public class RezervacioniSistem {
 
@@ -81,6 +83,15 @@ public class RezervacioniSistem {
 	 */
 	public void izbrisiTeren(String teniskiTeren) {
 		SOIzbrisiTeren.izbrisiTeren(teniskiTeren, tipoviTerena);
+	}
+	
+	public void ucitajIzFajla(String putanja) {
+		SOUcitajIzFajla.ucitajIzFajla(putanja, rezervacije);
+	}
+
+	
+	public void sacuvajUFajl(String putanja) {
+		SOSacuvajUFajl.sacuvajUFajl(putanja, rezervacije);
 	}
 	
 }

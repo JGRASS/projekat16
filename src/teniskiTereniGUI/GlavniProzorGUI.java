@@ -56,7 +56,6 @@ public class GlavniProzorGUI extends JFrame {
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	private JMenu mnFile;
-	private JMenu mnHelp;
 	private JMenu mnAbout;
 	private JMenuItem mntmNovaRezervacija;
 	private JPanel panel;
@@ -72,7 +71,6 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenuItem mntmExit;
 	private JLabel lblRezervacije;
 	private JSpinner spinner;
-	private JMenuItem mntmPomoc;
 	private JMenuItem mntmOProgramu;
 
 	
@@ -104,7 +102,6 @@ public class GlavniProzorGUI extends JFrame {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
 			menuBar.add(getMnFile());
-			menuBar.add(getMnHelp());
 			menuBar.add(getMnAbout());
 		}
 		return menuBar;
@@ -118,13 +115,6 @@ public class GlavniProzorGUI extends JFrame {
 			mnFile.add(getMntmExit());
 		}
 		return mnFile;
-	}
-	private JMenu getMnHelp() {
-		if (mnHelp == null) {
-			mnHelp = new JMenu("Help");
-			mnHelp.add(getMntmPomoc());
-		}
-		return mnHelp;
 	}
 	private JMenu getMnAbout() {
 		if (mnAbout == null) {
@@ -247,6 +237,11 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenuItem getMntmSave() {
 		if (mntmSave == null) {
 			mntmSave = new JMenuItem("Save");
+			mntmSave.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.sacuvajUFajlGlavniProzor();
+				}
+			});
 			mntmSave.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487204_Save.png")));
 		}
 		return mntmSave;
@@ -254,6 +249,11 @@ public class GlavniProzorGUI extends JFrame {
 	private JMenuItem getMntmOpen() {
 		if (mntmOpen == null) {
 			mntmOpen = new JMenuItem("Open");
+			mntmOpen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.ucitajIzFajlaGlavniProzor();
+				}
+			});
 			mntmOpen.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487446_Open_v2.png")));
 		}
 		return mntmOpen;
@@ -278,13 +278,6 @@ public class GlavniProzorGUI extends JFrame {
 			lblRezervacije.setBounds(21, 21, 96, 14);
 		}
 		return lblRezervacije;
-	}
-	private JMenuItem getMntmPomoc() {
-		if (mntmPomoc == null) {
-			mntmPomoc = new JMenuItem("Pomoc");
-			mntmPomoc.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487253_Help.png")));
-		}
-		return mntmPomoc;
 	}
 	private JMenuItem getMntmOProgramu() {
 		if (mntmOProgramu == null) {
