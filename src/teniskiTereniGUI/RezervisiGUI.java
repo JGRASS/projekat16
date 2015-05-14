@@ -194,12 +194,17 @@ public class RezervisiGUI extends JFrame {
 					teren.setImeKorisnika(imeKorisnika);
 					teren.setBrojTelefona(broj);
 					
-					GUIKontroler.dodajRezervaciju(teren);
+					if (GUIKontroler.vratiRezervacije().contains(teren))
+						JOptionPane.showMessageDialog(contentPane, "Rezervacija vec postoji.");
+					else {
+						
+						GUIKontroler.dodajRezervaciju(teren);
 					
-					String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
-					GUIKontroler.ubaciUStatus(status);
+						String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
+						GUIKontroler.ubaciUStatus(status);
 					
-					dispose();
+						dispose();
+					}
 				}
 			});
 			btnRezervisi.setBounds(10, 213, 169, 23);
