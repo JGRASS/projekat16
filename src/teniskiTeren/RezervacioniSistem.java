@@ -90,4 +90,10 @@ public class RezervacioniSistem {
 		tipoviTerena.add(teniskiTeren);
 	}
 	
+	public void izbrisiTeren(String teniskiTeren) {
+		if (!tipoviTerena.contains(teniskiTeren))
+			throw new RuntimeException("Teren ne postoji. ");
+		tipoviTerena.remove(teniskiTeren);
+	}
+	
 }

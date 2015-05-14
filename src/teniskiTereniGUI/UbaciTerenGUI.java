@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
@@ -17,6 +18,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -102,7 +104,12 @@ public class UbaciTerenGUI extends JFrame {
 			btnDodajTeren.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					String teren = textField.getText();
-					GUIKontroler.dodajTeren(teren);
+					LinkedList<String> tipoviTerena = GUIKontroler.vratiTipoveTerena();
+					if (tipoviTerena.contains(teren))
+						JOptionPane.showMessageDialog(contentPane, "Teren vec postoji.");
+					else {
+						GUIKontroler.dodajTeren(teren);
+					}
 					dispose();
 				}
 			});

@@ -58,6 +58,10 @@ public class ObrisiTerenGUI extends JFrame {
 	private JButton getBtnObrisiTeren() {
 		if (btnObrisiTeren == null) {
 			btnObrisiTeren = new JButton("Obrisi teren");
+			btnObrisiTeren.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 			btnObrisiTeren.setEnabled(false);
 			btnObrisiTeren.setFont(new Font("Tahoma", Font.BOLD, 15));
 			btnObrisiTeren.setBounds(63, 197, 139, 51);
