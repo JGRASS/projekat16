@@ -69,6 +69,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 
 /**
  * Predstavlja GUI Administratora kojem se pristupa preko usera i passworda
@@ -78,7 +79,6 @@ import java.awt.event.WindowEvent;
 public class AdminProzorGUI extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFile;
-	private JMenu mnHelp;
 	private JMenu mnAbout;
 	private JMenuItem mntmNew;
 	private JMenuItem mntmOpen;
@@ -91,7 +91,6 @@ public class AdminProzorGUI extends JFrame {
 	private JButton btnDodajRezervaciju;
 	private JButton btnIzbrisiRezervaciju;
 	private JMenuItem mntmOProgramu;
-	private JMenuItem mntmPomoc;
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
 	private JSpinner spinner;
@@ -127,7 +126,6 @@ public class AdminProzorGUI extends JFrame {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
 			menuBar.add(getMnFile());
-			menuBar.add(getMnHelp());
 			menuBar.add(getMnAbout());
 		}
 		return menuBar;
@@ -142,13 +140,6 @@ public class AdminProzorGUI extends JFrame {
 		}
 		return mnFile;
 	}
-	private JMenu getMnHelp() {
-		if (mnHelp == null) {
-			mnHelp = new JMenu("Help");
-			mnHelp.add(getMntmPomoc());
-		}
-		return mnHelp;
-	}
 	private JMenu getMnAbout() {
 		if (mnAbout == null) {
 			mnAbout = new JMenu("About");
@@ -159,24 +150,38 @@ public class AdminProzorGUI extends JFrame {
 	private JMenuItem getMntmNew() {
 		if (mntmNew == null) {
 			mntmNew = new JMenuItem("New");
+			mntmNew.setIcon(new ImageIcon(AdminProzorGUI.class.getResource("/icons/1431487165_Add.png")));
 		}
 		return mntmNew;
 	}
 	private JMenuItem getMntmOpen() {
 		if (mntmOpen == null) {
 			mntmOpen = new JMenuItem("Open");
+			mntmOpen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.ucitajIzFajlaAdminProzor();
+				}
+			});
+			mntmOpen.setIcon(new ImageIcon(AdminProzorGUI.class.getResource("/icons/1431487446_Open_v2.png")));
 		}
 		return mntmOpen;
 	}
 	private JMenuItem getMntmSave() {
 		if (mntmSave == null) {
 			mntmSave = new JMenuItem("Save");
+			mntmSave.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.sacuvajUFajlAdminProzor();
+				}
+			});
+			mntmSave.setIcon(new ImageIcon(AdminProzorGUI.class.getResource("/icons/1431487204_Save.png")));
 		}
 		return mntmSave;
 	}
 	private JMenuItem getMntmExit() {
 		if (mntmExit == null) {
 			mntmExit = new JMenuItem("Exit");
+			mntmExit.setIcon(new ImageIcon(AdminProzorGUI.class.getResource("/icons/1431487154_Delete.png")));
 			mntmExit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKontroler.ugasiAplikacijuAdminProzor();
@@ -287,12 +292,6 @@ public class AdminProzorGUI extends JFrame {
 			});
 		}
 		return mntmOProgramu;
-	}
-	private JMenuItem getMntmPomoc() {
-		if (mntmPomoc == null) {
-			mntmPomoc = new JMenuItem("Pomoc?");
-		}
-		return mntmPomoc;
 	}
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
