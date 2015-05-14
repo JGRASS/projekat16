@@ -51,7 +51,7 @@ public class PocetniProzorGUI extends JFrame {
 			btnNewButton = new JButton("Administrator");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziPrijaviSeGUI();
+					GUIKontroler.prikaziPrijaviSeGUI();
 				}
 			});
 			btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -65,7 +65,7 @@ public class PocetniProzorGUI extends JFrame {
 			btnNewButton_1 = new JButton("Zaposleni");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziGlavniProzorGUI();
+					GUIKontroler.prikaziGlavniProzorGUI();
 
 					dispose();
 

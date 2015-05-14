@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import teniskiTeren.RezervacioniSistem;
+
 /**
  * Predstavlja prozor koji sluzi za ubacivanje novog terena
  * @author Sasa
@@ -100,7 +102,7 @@ public class UbaciTerenGUI extends JFrame {
 			btnDodajTeren.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					String teren = textField.getText();
-					GUIKOntroler.dodajTeren(teren);
+					GUIKontroler.dodajTeren(teren);
 					dispose();
 				}
 			});

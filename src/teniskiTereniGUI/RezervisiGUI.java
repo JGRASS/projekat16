@@ -36,6 +36,7 @@ import java.awt.Font;
 
 import javax.swing.AbstractListModel;
 
+import teniskiTeren.RezervacioniSistem;
 import teniskiTeren.TeniskiTeren;
 
 import java.awt.Color;
@@ -64,8 +65,7 @@ public class RezervisiGUI extends JFrame {
 	private JLabel lblBrojTelefona;
     public AdminProzorGUI adminProzor;
     public GlavniProzorGUI glavniProzor;
-    private JComboBox tip;
-	
+    private JComboBox jcbTeniskiTeren;
 	
 
 	/**
@@ -91,7 +91,7 @@ public class RezervisiGUI extends JFrame {
 		contentPane.add(getList());
 		contentPane.add(getBrojTelefona());
 		contentPane.add(getLblBrojTelefona());
-		contentPane.add(getTip());
+		contentPane.add(getJcbTeniskiTeren());
 		this.adminProzor = prozor;
 		this.glavniProzor = prozorG;
 	}
@@ -171,16 +171,15 @@ public class RezervisiGUI extends JFrame {
 						 return;	
 					}
 
-					String tipTerena = tip.getSelectedItem().toString();
+					String tipTerena = jcbTeniskiTeren.getSelectedItem().toString();
 					Date datum = (Date) dan.getValue();
 					String imeKorisnika = imeIPrezime.getText();
 					String broj = brojTelefona.getText();
 					
-					GUIKOntroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);
+					GUIKontroler.dodajRezervaciju(tipTerena,datum,sat,imeKorisnika,broj);
 					
 					String status = "Teren: "+tipTerena+" Datum: "+datum+" Sat: "+sat+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+broj;
-					adminProzor.dodajStatusAdmin(status);
-					glavniProzor.dodajStatusGlavni(status);
+					GUIKontroler.ubaciUStatus(status);
 					
 					dispose();
 				}
@@ -268,14 +267,15 @@ public class RezervisiGUI extends JFrame {
 		}
 		return lblBrojTelefona;
 	}
-	public JComboBox getTip() {
-		if (tip == null) {
-			tip = new JComboBox();
-			tip.setBounds(66, 125, 111, 20);
-			tip.addItem("beton");
-			tip.addItem("sljaka");
-			tip.addItem("trava");
+	public JComboBox getJcbTeniskiTeren() {
+		if (jcbTeniskiTeren == null) {
+			jcbTeniskiTeren = new JComboBox();
+			jcbTeniskiTeren.setBounds(66, 125, 111, 20);
+			LinkedList<String> tipoviTerena = GUIKontroler.vratiTipoveTerena();
+			for (int i = 0; i < tipoviTerena.size(); i++) {
+				jcbTeniskiTeren.addItem(tipoviTerena.get(i).toString());
+			}
 		}
-		return tip;
+		return jcbTeniskiTeren;
 	}
 }

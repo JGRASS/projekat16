@@ -6,17 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Toolkit;
 import java.awt.Color;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.LinkedList;
+
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+
+import teniskiTeren.TeniskiTeren;
 
 public class ObrisiTerenGUI extends JFrame {
 
@@ -25,7 +32,7 @@ public class ObrisiTerenGUI extends JFrame {
 	private JButton btnOdustani;
 	private JRadioButton rdbtnIzbrisiTeren;
 	private JLabel lblTeren;
-	private JComboBox comboBox;
+	private JComboBox jcbTeniskiTeren;
 
 
 	/**
@@ -46,7 +53,7 @@ public class ObrisiTerenGUI extends JFrame {
 		contentPane.add(getBtnOdustani());
 		contentPane.add(getRdbtnIzbrisiTeren());
 		contentPane.add(getLblTeren());
-		contentPane.add(getComboBox());
+		contentPane.add(getJcbTeniskiTeren());
 	}
 	private JButton getBtnObrisiTeren() {
 		if (btnObrisiTeren == null) {
@@ -96,11 +103,16 @@ public class ObrisiTerenGUI extends JFrame {
 		}
 		return lblTeren;
 	}
-	public JComboBox getComboBox() {
-		if (comboBox == null) {
-			comboBox = new JComboBox();
-			comboBox.setBounds(192, 87, 116, 20);
+	public JComboBox getJcbTeniskiTeren() {
+		if (jcbTeniskiTeren == null) {
+			jcbTeniskiTeren = new JComboBox();
+			jcbTeniskiTeren.setBounds(66, 125, 111, 20);
+			LinkedList<String> tipoviTerena = GUIKontroler.vratiTipoveTerena();
+			for (int i = 0; i < tipoviTerena.size(); i++) {
+				jcbTeniskiTeren.addItem(tipoviTerena.get(i).toString());
+			}
 		}
-		return comboBox;
+		return jcbTeniskiTeren;
 	}
+	
 }

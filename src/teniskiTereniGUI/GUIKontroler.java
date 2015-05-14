@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-import teniskiTeren.Implementacija;
+import teniskiTeren.RezervacioniSistem;
 import teniskiTeren.TeniskiTeren;
 
 
@@ -15,7 +15,7 @@ import teniskiTeren.TeniskiTeren;
  * @author Sasa
  *
  */
-public class GUIKOntroler {
+public class GUIKontroler {
 	
 	/**
 	 *instanca ObrisiTeren klase 
@@ -25,7 +25,7 @@ public class GUIKOntroler {
 	/**
 	 * instanca Implementacija klase
 	 */
-	private static Implementacija sistem ;
+	private static RezervacioniSistem sistem ;
 	
 	/**
 	 * instanca PocetniProzorGUI klase
@@ -56,7 +56,7 @@ public class GUIKOntroler {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					sistem = new Implementacija();
+					sistem = new RezervacioniSistem();
 					pocetniProzor = new PocetniProzorGUI();
 					pocetniProzor.setVisible(true);
 					pocetniProzor.setLocationRelativeTo(null);
@@ -141,7 +141,7 @@ public class GUIKOntroler {
 	public static void dodajRezervaciju(String tipTerena, Date datum,int sat , String imeKorisnika, String brojTelefona) {
 		
 		sistem.rezervisi(tipTerena, datum, sat, imeKorisnika, brojTelefona);
-		glavniProzor.prikaziSveRezervacije(sistem.vratiRezervacije());
+		glavniProzor.prikaziSveRezervacije(sistem.getRezervacije());
 		
 	}
 	
@@ -187,22 +187,20 @@ public class GUIKOntroler {
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	/**
-	 * ubacuje novi teren u combobox RezervisiGUI prozora
-	 * @param teren
-	 */
-	
-	//PITAMO SUTRA BOJANA KAKO DA IZVEDEMO OVO
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	@SuppressWarnings("unchecked")
-	public static void dodajTeren(String teren) {
-		rezervisiProzor.getTip().addItem(teren);
-		obrisiTeren.getComboBox().addItem(teren);
-		
-	}
-	
 	public static LinkedList<TeniskiTeren> vratiRezervacije(){
-		return sistem.vratiRezervacije();
+		return sistem.getRezervacije();
 	}
 	
+	public static void ubaciUStatus(String string) {
+		adminProzor.dodaj(string);
+		glavniProzor.dodaj(string);
+	}
+	
+	public static LinkedList<String> vratiTipoveTerena() {
+		return sistem.getTipoviTerena();
+	}
+	
+	public static void dodajTeren(String teren) {
+		sistem.dodajTeren(teren);
+	}
 }

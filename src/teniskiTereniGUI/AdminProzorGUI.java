@@ -106,7 +106,7 @@ public class AdminProzorGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-			GUIKOntroler.ugasiAplikacijuAdminProzor();	
+			GUIKontroler.ugasiAplikacijuAdminProzor();	
 				
 			}
 		});
@@ -178,7 +178,7 @@ public class AdminProzorGUI extends JFrame {
 			mntmExit = new JMenuItem("Exit");
 			mntmExit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.ugasiAplikacijuAdminProzor();
+					GUIKontroler.ugasiAplikacijuAdminProzor();
 				}
 			});
 		}
@@ -216,7 +216,7 @@ public class AdminProzorGUI extends JFrame {
 			btnDodajTeren = new JButton("Dodaj teren");
 			btnDodajTeren.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziDodajTerenProzor();
+					GUIKontroler.prikaziDodajTerenProzor();
 				}
 			});
 			btnDodajTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -230,7 +230,7 @@ public class AdminProzorGUI extends JFrame {
 			btnIzbrisiTeren = new JButton("Izbrisi teren");
 			btnIzbrisiTeren.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziObrisiTerenProzor();
+					GUIKontroler.prikaziObrisiTerenProzor();
 				}
 			});
 			btnIzbrisiTeren.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -245,7 +245,7 @@ public class AdminProzorGUI extends JFrame {
 			btnDodajRezervaciju.setFont(new Font("Tahoma", Font.BOLD, 13));
 			btnDodajRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziRezervisiGUI();
+					GUIKontroler.prikaziRezervisiGUI();
 				}
 			});
 			btnDodajRezervaciju.setBackground(new Color(128, 128, 128));
@@ -261,7 +261,7 @@ public class AdminProzorGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list.getSelectedValue() != null) {
 						TeniskiTeren teren = (TeniskiTeren) list.getSelectedValue();
-						GUIKOntroler.obrisiRezervaciju(teren);
+						GUIKontroler.obrisiRezervaciju(teren);
 					}
 				}
 			});
@@ -275,7 +275,7 @@ public class AdminProzorGUI extends JFrame {
 			mntmOProgramu = new JMenuItem("O programu");
 			mntmOProgramu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziAboutProzorGlavniProzor();
+					GUIKontroler.prikaziAboutProzorGlavniProzor();
 				}
 			});
 		}
@@ -329,8 +329,8 @@ public class AdminProzorGUI extends JFrame {
 	 * Metoda koja puni status bar
 	 * @param status
 	 */
-	public void dodajStatusAdmin(String status) {
-		getTextArea().append(status);
+	public void dodaj(String status) {
+		textArea.append(status);
 		
 	}
 	

@@ -1,13 +1,40 @@
 package teniskiTeren;
 
 
-import java.sql.Date;
 import java.util.LinkedList;
+import java.util.List;
 
-public class Implementacija {
+public class RezervacioniSistem {
 
-	private static LinkedList<TeniskiTeren> rezervacije = new LinkedList<>();
+	private  LinkedList<TeniskiTeren> rezervacije = new LinkedList<>();
+	private  LinkedList<String> tipoviTerena = new LinkedList<String>();
 	
+	public RezervacioniSistem() {
+		tipoviTerena.add("sljaka");
+		tipoviTerena.add("beton");
+		tipoviTerena.add("trava");
+	}
+	
+
+	public LinkedList<TeniskiTeren> getRezervacije() {
+		return rezervacije;
+	}
+
+
+	public void setRezervacije(LinkedList<TeniskiTeren> rezervacije) {
+		this.rezervacije = rezervacije;
+	}
+
+
+	public LinkedList<String> getTipoviTerena() {
+		return tipoviTerena;
+	}
+
+
+	public void setTipoviTerena(LinkedList<String> tipoviTerena) {
+		this.tipoviTerena = tipoviTerena;
+	}
+
 
 	/**
 	 * Metoda koja puni objekat i ubacuje ga u listu rezervacije.
@@ -50,8 +77,17 @@ public class Implementacija {
 		rezervacije.remove(t);
 	
 	}
-	public LinkedList<TeniskiTeren> vratiRezervacije(){
-		return rezervacije;
+
+	/**
+	 * Metoda dodaje novi teren
+	 * @param teniskiTeren
+	 */
+	public void dodajTeren(String teniskiTeren) {
+		
+		if (tipoviTerena.contains(teniskiTeren))
+				throw new RuntimeException("Teren vec postoji.");
+		
+		tipoviTerena.add(teniskiTeren);
 	}
 	
 }

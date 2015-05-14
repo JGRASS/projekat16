@@ -101,9 +101,9 @@ public class PrijaviSeGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String password = new String(sifra.getPassword());
 					if(kornisickoIme.getText().equals("nikola") && password.equals("tesla")){
-						GUIKOntroler.prikaziAdminProzorGUI();
+						GUIKontroler.prikaziAdminProzorGUI();
 					 dispose();
-					 GUIKOntroler.zatvoriPocetniProzor();}
+					 GUIKontroler.zatvoriPocetniProzor();}
 					else
 						JOptionPane.showMessageDialog(contentPane, "Pogresno korisnicko ime i lozinka");
 						

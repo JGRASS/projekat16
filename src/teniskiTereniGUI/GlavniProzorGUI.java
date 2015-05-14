@@ -66,7 +66,7 @@ public class GlavniProzorGUI extends JFrame {
 	private JButton btnDodajRezervaciju;
 	private JButton btnObrisiRezervaciju;
 	private JScrollPane scrollPane;
-	private JTextArea textArea;
+	public JTextArea textArea;
 	private JMenuItem mntmSave;
 	private JMenuItem mntmOpen;
 	private JMenuItem mntmExit;
@@ -84,7 +84,7 @@ public class GlavniProzorGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				GUIKOntroler.ugasiAplikacijuGlavniProzor();
+				GUIKontroler.ugasiAplikacijuGlavniProzor();
 			}
 		});
 		setTitle("Zaposleni");
@@ -138,7 +138,7 @@ public class GlavniProzorGUI extends JFrame {
 			mntmNovaRezervacija = new JMenuItem("New");
 			mntmNovaRezervacija.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziRezervisiGUI();
+					GUIKontroler.prikaziRezervisiGUI();
 				}
 			});
 			mntmNovaRezervacija.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487165_Add.png")));
@@ -197,7 +197,7 @@ public class GlavniProzorGUI extends JFrame {
 			btnDodajRezervaciju.setPreferredSize(new Dimension(140, 45));
 			btnDodajRezervaciju.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziRezervisiGUI();
+					GUIKontroler.prikaziRezervisiGUI();
 					
 				}
 			});
@@ -216,7 +216,7 @@ public class GlavniProzorGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list_3.getSelectedValue() != null) {
 						TeniskiTeren teren = (TeniskiTeren) list_3.getSelectedValue();
-						GUIKOntroler.obrisiRezervaciju(teren);
+						GUIKontroler.obrisiRezervaciju(teren);
 					}
 				}
 			});
@@ -234,7 +234,7 @@ public class GlavniProzorGUI extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
-			textArea.setEditable(false);
+			textArea.setText("  ");
 		}
 		return textArea;
 	}
@@ -258,7 +258,7 @@ public class GlavniProzorGUI extends JFrame {
 			mntmExit.setIcon(new ImageIcon(GlavniProzorGUI.class.getResource("/icons/1431487154_Delete.png")));
 			mntmExit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.ugasiAplikacijuGlavniProzor();
+					GUIKontroler.ugasiAplikacijuGlavniProzor();
 				}
 			});
 		}
@@ -285,7 +285,7 @@ public class GlavniProzorGUI extends JFrame {
 			mntmOProgramu = new JMenuItem("O programu");
 			mntmOProgramu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKOntroler.prikaziAboutProzorGlavniProzor();
+					GUIKontroler.prikaziAboutProzorGlavniProzor();
 				}
 			});
 		}
@@ -296,12 +296,13 @@ public class GlavniProzorGUI extends JFrame {
 	 * puni status bar glavnog prozora
 	 * @param status
 	 */
-	public void dodajStatusGlavni(String status) {
-		getTextArea().append(status);
+	public void dodaj(String status) {
+		textArea.append(status);
 		
 	}
 	public void prikaziSveRezervacije(LinkedList rezervacije){
 		
 		list_3.setListData(rezervacije.toArray());
 	}
+	
 }
