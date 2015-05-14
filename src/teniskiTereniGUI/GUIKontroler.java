@@ -219,11 +219,6 @@ public class GUIKontroler {
 		return sistem.getRezervacije();
 	}
 	
-	public static void ubaciUStatus(String string) {
-		adminProzor.dodajUStatus(string);
-		glavniProzor.dodajUStatus(string);
-	}
-	
 	public static LinkedList<String> vratiTipoveTerena() {
 		return sistem.getTipoviTerena();
 	}
