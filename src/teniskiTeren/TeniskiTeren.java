@@ -111,7 +111,7 @@ import java.util.LinkedList;
 		 * @throws java.lang.RuntimeException  ako je imeKorisnika prazan string
 		 */
 		public void setImeKorisnika(String imeKorisnika) {
-			if (imeKorisnika.equals(" ") || imeKorisnika.isEmpty())
+			if (imeKorisnika.equals(" ") || imeKorisnika.isEmpty() || imeKorisnika == null)
 				throw new RuntimeException("Morate uneti ime korisnika.");
 			this.imeKorisnika = imeKorisnika;
 		}
@@ -130,7 +130,7 @@ import java.util.LinkedList;
 		 * @throws java.lang.RuntimeException ako broj nije unesen
 		 */
 		public void setBrojTelefona(String brojTelefona) {
-			if (brojTelefona.length() < 1)
+			if (brojTelefona.length() < 1 || brojTelefona.isEmpty() || brojTelefona == " ")
 				throw new RuntimeException("Morate uneti broj");
 			this.brojTelefona = brojTelefona;
 		}
