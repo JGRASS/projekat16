@@ -153,7 +153,14 @@ public class GUIKontroler {
 		teren.setBrojTelefona(brojTelefona);
 		
 		sistem.rezervisi(teren);
+		
+		String status = "Teren: "+tipTerena+" Datum: "+datum+" Vreme: "+datum+" Ime korisnika:"+imeKorisnika+" Broj telefona:"+brojTelefona;
+		
+		adminProzor.dodajUStatus(status);
+		glavniProzor.dodajUStatus(status);
 	
+		adminProzor.prikaziSveRezervacije(sistem.getRezervacije());
+		glavniProzor.prikaziSveRezervacije(sistem.getRezervacije());
 		
 	}
 	
@@ -204,8 +211,8 @@ public class GUIKontroler {
 	}
 	
 	public static void ubaciUStatus(String string) {
-		adminProzor.dodaj(string);
-		glavniProzor.dodaj(string);
+		adminProzor.dodajUStatus(string);
+		glavniProzor.dodajUStatus(string);
 	}
 	
 	public static LinkedList<String> vratiTipoveTerena() {
