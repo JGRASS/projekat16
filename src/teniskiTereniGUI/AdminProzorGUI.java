@@ -261,7 +261,13 @@ public class AdminProzorGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list.getSelectedValue() != null) {
 						TeniskiTeren teren = (TeniskiTeren) list.getSelectedValue();
-						GUIKontroler.obrisiRezervaciju(teren);
+						String tipTerena = teren.getTipTerena();
+						Date datum = teren.getDatum();
+						int sat = teren.getSat();
+						String imeKorisnika = teren.getImeKorisnika();
+						String brojTelefona = teren.getBrojTelefona();
+						
+						GUIKontroler.obrisiRezervaciju(tipTerena, datum ,sat, imeKorisnika, brojTelefona);
 					}
 				}
 			});

@@ -128,7 +128,14 @@ public class GUIKontroler {
 	 * Poziva metodu koja brise rezervaciju
 	 * @param teren
 	 */
-	public static void obrisiRezervaciju(TeniskiTeren teren){
+	public static void obrisiRezervaciju(String tipTerena, Date datum, int sat, String imeKorisnika, String brojTelefona){
+		TeniskiTeren teren = new TeniskiTeren();
+		teren.setTipTerena(tipTerena);
+		teren.setDatum(datum);
+		teren.setSat(sat);
+		teren.setImeKorisnika(imeKorisnika);
+		teren.setBrojTelefona(brojTelefona);
+		
 		sistem.izbrisiRezervaciju(teren);
 	
 	}

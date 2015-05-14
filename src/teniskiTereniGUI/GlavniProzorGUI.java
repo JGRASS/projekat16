@@ -216,7 +216,13 @@ public class GlavniProzorGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					if(list_3.getSelectedValue() != null) {
 						TeniskiTeren teren = (TeniskiTeren) list_3.getSelectedValue();
-						GUIKontroler.obrisiRezervaciju(teren);
+						String tipTerena = teren.getTipTerena();
+						Date datum = teren.getDatum();
+						int sat = teren.getSat();
+						String imeKorisnika = teren.getImeKorisnika();
+						String brojTelefona = teren.getBrojTelefona();
+						
+						GUIKontroler.obrisiRezervaciju(tipTerena, datum ,sat, imeKorisnika, brojTelefona);
 					}
 				}
 			});
