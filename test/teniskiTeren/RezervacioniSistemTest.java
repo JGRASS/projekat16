@@ -102,7 +102,7 @@ public class RezervacioniSistemTest {
 
 	@Test
 	public void testDodajTeren() {
-		String teniskiTeren = "trava";
+		String teniskiTeren = "nebo";
 		
 		sistem.dodajTeren(teniskiTeren);
 	}
@@ -112,13 +112,12 @@ public class RezervacioniSistemTest {
 		String teniskiTeren = "trava";
 		
 		sistem.dodajTeren(teniskiTeren);
-		sistem.dodajTeren(teniskiTeren);
+	
 	}
 
 	@Test
 	public void testIzbrisiTeren() {
 		String teniskiTeren = "trava";
-		sistem.dodajTeren(teniskiTeren);
 		sistem.izbrisiTeren(teniskiTeren);
 	}
 	
