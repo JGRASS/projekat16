@@ -16,6 +16,12 @@ public class RezervacioniSistem {
 	private  LinkedList<String> tipoviTerena = new LinkedList<String>();
 	
 
+	public RezervacioniSistem () {
+		tipoviTerena.add("sljaka");
+		tipoviTerena.add("beton");
+		tipoviTerena.add("trava");
+	}
+	
 	public LinkedList<TeniskiTeren> getRezervacije() {
 		return rezervacije;
 	}
