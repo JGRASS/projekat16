@@ -2,9 +2,7 @@
 	package teniskiTeren;
 
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
+	import java.util.Date;
 
 
 

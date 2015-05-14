@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import teniskiTeren.TeniskiTeren;
 
 public class SOUcitajIzFajla {
+	
 	public static void ucitajIzFajla(String putanja, LinkedList<TeniskiTeren> rezervacije) {
 		try{
 			ObjectInputStream in = new ObjectInputStream(
